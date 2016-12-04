@@ -12,17 +12,20 @@
 
 #include "server.h"
 
-/*
-static void	check_content(t_select *st_select, t_data_server *st_data)
+static void	check_client(t_select *st_select, t_list *client_lst,
+		t_command_queue *cmd)
 {
-	if (FD_ISSET(i, &(st_select->read)))
+	t_client	*client;
+	while (client_lst)
 	{
-	}
-	if (FD_ISSET(i, &(st_select->write)))
-	{
+		client = client_lst->content;
+		if (FD_ISSET(client->sockfd, &(st_select->read)))
+		{
+			read_client(client, cmd);
+		}
+		client_lst = client_lst->next;
 	}
 }
-*/
 
 void		check_select(t_select *st_select, t_data_server *st_data)
 {
@@ -31,6 +34,7 @@ void		check_select(t_select *st_select, t_data_server *st_data)
 		ft_lstadd(&(st_data->client_list),
 				ft_lstnew(get_client(st_select->sockfd), sizeof(t_client))
 		);
-		ft_printf("Nnew client\n");
+		ft_printf("New client\n");
 	}
+	check_client(st_select, &(st_data->client_list), &(st_data->cmd_queue));
 }

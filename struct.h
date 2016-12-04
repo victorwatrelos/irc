@@ -13,6 +13,11 @@ typedef struct	s_client
 	char		nickname[NICK_MAXSIZE + 1];
 }				t_client;
 
+typedef struct	s_command_queue
+{
+	int			size;
+}				t_command_queue;
+
 typedef struct	s_select
 {
 	fd_set		read;
@@ -23,8 +28,9 @@ typedef struct	s_select
 
 typedef struct	s_data_server
 {
-	int			nb_client;
-	t_list		*client_list;
+	int				nb_client;
+	t_list			*client_list;
+	t_command_queue	cmd_queue;
 }				t_data_server;
 
 

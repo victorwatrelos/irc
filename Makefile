@@ -10,6 +10,7 @@ SRC=main.c \
 	server2.c \
 	check_select.c \
 	get_client.c \
+	read_client.c \
 	failure_exit.c
 
 
