@@ -1,13 +1,20 @@
 #include "read_client.h"
 
+static t_bool	get_carriage_flag(t_client *client)
+{
+	if (client->size_current_msg <= 0)
+		return (FALSE);
+	return (client->curr_cmd[0] == '\r');
+}
+
 static void	cat_cmd(t_client *client, const char *msg, int size)
 {
-	int		carriage;
-	int		eol;
+	t_bool	carriage;
+	t_bool	eol;
 	int		i;
 
 	eol = FALSE;
-	carriage = FALSE;
+	carriage = get_carriage_flag(client);
 	i = 0;
 	while (i < size)
 	{
@@ -37,7 +44,8 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 		cat_cmd(client, msg + i, size - i);
 		return ;
 	}
-	ft_strncat(client->curr_cmd, 
+	ft_strncat(client->curr_cmd, msg, i);
+	client->size_current_msg += i;
 }
 
 void		read_client(t_list *client_elem, t_command_queue *cmd, t_list **lst_client)

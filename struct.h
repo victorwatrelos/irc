@@ -7,18 +7,37 @@
 # include <netinet/in.h>
 # include "list.h"
 
+enum eCmd { NICK, JOIN };
+
+typedef struct	s_cmd_map
+{
+	const char	cmd[MAX_SIZE_CMD_STR];
+	eCmd		cmd;
+}				t_cmd_map;
+
+typedef struct	s_cmd
+{
+	eCmd		cmd_type;	
+	//TODO param cmd
+	//TODO fn pointer
+}				t_cmd;
+
+typedef struct	s_circular_cmd_queue
+{
+	int			pos;
+	int			size;
+	t_cmd		in_buff[CMD_CIRCULAR_BUFF_SIZE];
+	t_cmd		out_buff[CMD_CIRCULAR_BUFF_SIZE];
+}				t_circular_cmd_queue;
+
 typedef struct	s_client
 {
 	int			sockfd;
 	char		nickname[NICK_MAXSIZE + 1];
 	char		curr_cmd[MAX_CMD_SIZE + 1];
 	int			size_current_msg;
-}				t_client;
 
-typedef struct	s_command_queue
-{
-	int			size;
-}				t_command_queue;
+}				t_client;
 
 typedef struct	s_select
 {
