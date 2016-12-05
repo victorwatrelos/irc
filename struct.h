@@ -11,6 +11,8 @@ typedef struct	s_client
 {
 	int			sockfd;
 	char		nickname[NICK_MAXSIZE + 1];
+	char		curr_cmd[MAX_CMD_SIZE + 1];
+	int			size_current_msg;
 }				t_client;
 
 typedef struct	s_command_queue

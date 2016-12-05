@@ -12,16 +12,19 @@
 
 #include "server.h"
 
-static void	check_client(t_select *st_select, t_list *client_lst,
+static void	check_client(t_select *st_select, t_list **client_lst_pointer,
 		t_command_queue *cmd)
 {
 	t_client	*client;
+	t_list		*client_lst;
+
+	client_lst = *client_lst_pointer;
 	while (client_lst)
 	{
 		client = client_lst->content;
 		if (FD_ISSET(client->sockfd, &(st_select->read)))
 		{
-			read_client(client, cmd);
+			read_client(client_lst, cmd, client_lst_pointer);
 		}
 		client_lst = client_lst->next;
 	}

@@ -4,7 +4,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <libft.h>
+# include <list.h>
+# include "struct.h"
 
 void	failure_exit(char const *msg);
+void	failure_exit_client(t_list *client, t_list **lst_client);
 
 #endif
