@@ -1,5 +1,6 @@
 #include "add_cmd.h"
 
-void	add_cmd(const char *cmd, t_client *client)
+void	add_cmd(t_client *client)
 {
+	printf("Client with message: %s", client->curr_cmd);
 }

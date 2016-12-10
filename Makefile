@@ -5,12 +5,14 @@ NAME=server
 INCLUDES=-I libft/includes -I ./
 
 SRC=main.c \
+	circular_buffer.c \
 	init_server.c \
 	server.c \
 	server2.c \
 	check_select.c \
 	get_client.c \
 	read_client.c \
+	add_cmd.c \
 	failure_exit.c
 
 

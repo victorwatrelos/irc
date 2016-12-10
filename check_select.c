@@ -12,8 +12,7 @@
 
 #include "server.h"
 
-static void	check_client(t_select *st_select, t_list **client_lst_pointer,
-		t_command_queue *cmd)
+static void	check_client(t_select *st_select, t_list **client_lst_pointer)
 {
 	t_client	*client;
 	t_list		*client_lst;
@@ -23,9 +22,7 @@ static void	check_client(t_select *st_select, t_list **client_lst_pointer,
 	{
 		client = client_lst->content;
 		if (FD_ISSET(client->sockfd, &(st_select->read)))
-		{
-			read_client(client_lst, cmd, client_lst_pointer);
-		}
+			read_client(client_lst, client_lst_pointer);
 		client_lst = client_lst->next;
 	}
 }
@@ -39,5 +36,5 @@ void		check_select(t_select *st_select, t_data_server *st_data)
 		);
 		ft_printf("New client\n");
 	}
-	check_client(st_select, &(st_data->client_list), &(st_data->cmd_queue));
+	check_client(st_select, &(st_data->client_list));
 }

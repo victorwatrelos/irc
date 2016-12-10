@@ -7,6 +7,6 @@
 # include "bool.h"
 # include "add_cmd.h"
 
-void		read_client(t_list *client_elem, t_command_queue *cmd, t_list **lst_client);
+void		read_client(t_list *client_elem, t_list **lst_client);
 
 #endif

@@ -16,5 +16,7 @@ t_client		*get_client(int server_fd)
 		failure_exit("Unable to allocate t_client struct\n");
 	ft_bzero(client, sizeof(t_client));
 	client->sockfd = sockfd;
+	client->cmd_queue.buff_in = new_circular_buffer(CMD_CIRCULAR_BUFF_SIZE_IN);
+	client->cmd_queue.buff_out = new_circular_buffer(CMD_CIRCULAR_BUFF_SIZE_OUT);
 	return (client);
 }

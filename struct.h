@@ -6,29 +6,28 @@
 # include <sys/time.h>
 # include <netinet/in.h>
 # include "list.h"
+# include "circular_buffer.h"
 
 enum eCmd { NICK, JOIN };
 
 typedef struct	s_cmd_map
 {
-	const char	cmd[MAX_SIZE_CMD_STR];
-	eCmd		cmd;
+	const char	cmd_str[MAX_SIZE_CMD_STR];
+	enum eCmd	cmd_id;
 }				t_cmd_map;
 
 typedef struct	s_cmd
 {
-	eCmd		cmd_type;	
+	enum eCmd	cmd_type;	
 	//TODO param cmd
 	//TODO fn pointer
 }				t_cmd;
 
-typedef struct	s_circular_cmd_queue
+typedef struct	s_cmd_queue
 {
-	int			pos;
-	int			size;
-	t_cmd		in_buff[CMD_CIRCULAR_BUFF_SIZE];
-	t_cmd		out_buff[CMD_CIRCULAR_BUFF_SIZE];
-}				t_circular_cmd_queue;
+	t_circ_buff	*buff_in;
+	t_circ_buff	*buff_out;
+}				t_cmd_queue;
 
 typedef struct	s_client
 {
@@ -36,6 +35,7 @@ typedef struct	s_client
 	char		nickname[NICK_MAXSIZE + 1];
 	char		curr_cmd[MAX_CMD_SIZE + 1];
 	int			size_current_msg;
+	t_cmd_queue	cmd_queue;
 
 }				t_client;
 
@@ -51,7 +51,6 @@ typedef struct	s_data_server
 {
 	int				nb_client;
 	t_list			*client_list;
-	t_command_queue	cmd_queue;
 }				t_data_server;
 
 

@@ -13,6 +13,7 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 	t_bool	eol;
 	int		i;
 
+	printf("message: %s--\n", msg);
 	eol = FALSE;
 	carriage = get_carriage_flag(client);
 	i = 0;
@@ -48,18 +49,25 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 	client->size_current_msg += i;
 }
 
-void		read_client(t_list *client_elem, t_command_queue *cmd, t_list **lst_client)
+void		read_client(t_list *client_elem, t_list **lst_client)
 {
 	int			ret;
 	char		buff[MAX_CMD_SIZE + 1];
 	t_client	*client;
 
 	client = client_elem->content;
-	if ((ret = recv(client->sockfd, buff, MAX_CMD_SIZE, 0)) < 0)
+	if ((ret = read(client->sockfd, buff, MAX_CMD_SIZE)) < 0)
 	{
 		ft_printf("%rClient %d disconnect\n", client->sockfd);
 		failure_exit_client(client_elem, lst_client);
 		return;
 	}
-	(void)client;
+	if (ret == 0)
+	{
+		ft_printf("%rClient %d disconnect\n", client->sockfd);
+		failure_exit_client(client_elem, lst_client);
+		return ;
+	}
+	buff[ret] = '\0';
+	cat_cmd(client, buff, ret);
 }
