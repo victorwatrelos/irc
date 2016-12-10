@@ -6,14 +6,18 @@ static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 	int		end;
 	int		start;
 	char	final_cmd_str[MAX_CMD_SIZE + 1];
+	int		size;
 
-	start = jump_end_of_space(str_cmd);
-	end = jump_to_space(str_cmd + start);
+	start = jump_end_of_space(str_cmd, 0);
+	end = jump_to_space(str_cmd, start);
 	*pos = end;
-	ft_strncpy(final_cmd_str, str_cmd + start, end - start);
-	*pos = i;
+	size = end - start;
+	if (size > MAX_SIZE_CMD_STR)
+		return (NULL);
+	ft_strncpy(final_cmd_str, str_cmd + start, size);
+	final_cmd_str[size] = '\0';
 	i = 0;
-	printf("Final cmd str: %s\n", final_cmd_str);
+	printf("\nFinal cmd str: %s\n", final_cmd_str);
 	while (i < SIZE_STR_TO_ENUM_CMD)
 	{
 		if (ft_strcmp(g_str_to_enum_cmd[i].cmd_str, final_cmd_str) == 0)
@@ -39,4 +43,6 @@ void	add_cmd(t_client *client)
 		return ;
 	}
 	err = cmd(cmd_str + pos, client);
+	if (err != CMD_SUCCESS)
+		send_err_cmd(err, client);
 }

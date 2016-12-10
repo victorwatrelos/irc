@@ -15,6 +15,7 @@ SRC=main.c \
 	add_cmd.c \
 	const_global.c \
 	fn/nick.c \
+	fn/user.c \
 	utility/str_utils.c \
 	utility/client_utils.c \
 	send_err_cmd.c \

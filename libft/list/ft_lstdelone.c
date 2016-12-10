@@ -37,15 +37,14 @@ void		ft_lstdelone(t_list **list, t_list *elem)
 		return ;
 	if (elem == NULL)
 		return ;
-	if ((*list)->next == NULL)
+	if (*list == elem)
 	{
-		if (*list == elem)
-		{
-			free(elem);
-			*list = NULL;
-		}
+		*list = elem->next;
+		free(elem);
 		return ;
 	}
+	if ((*list)->next == NULL)
+		return ;
 	prvs = *list;
 	tmp_norm(prvs, elem);
 }

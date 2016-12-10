@@ -14,6 +14,34 @@ int		jump_to_space(const char *str, int pos)
 	return (pos);
 }
 
+const char	*next_param(const char *str, int *size, const char **next)
+{
+	const char	*start;
+
+	while (*str == ' ' || *str == '\t')
+		str++;
+	if (*str == '\0')
+		return (NULL);
+	start = str;
+	*size = 0;
+	while (*str != ' ' && *str != '\t' && *str != '\0')
+	{
+		(*size)++;
+		str++;
+	}
+	*next = str;
+	return (start);
+}
+
+char	*ft_strndup(const char *str, size_t size)
+{
+	char	*res;
+
+	res = malloc(size);
+	ft_strncpy(res, str, size);
+	return (res);
+}
+
 void	to_upper_rfc(char *str)
 {
 	while (*str != '\0')

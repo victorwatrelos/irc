@@ -13,7 +13,7 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 	t_bool	eol;
 	int		i;
 
-	printf("message: %s--\n", msg);
+	printf("message: --%s--\n", msg);
 	eol = FALSE;
 	carriage = get_carriage_flag(client);
 	i = 0;

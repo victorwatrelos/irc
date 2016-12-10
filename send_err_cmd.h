@@ -10,4 +10,8 @@ typedef struct	s_err_map
 	const char	*code;
 }				t_err_map;
 
+void		send_err_cmd(int err, t_client *client);
+
+# define SIZE_G_ERR_MAP 4
+
 #endif

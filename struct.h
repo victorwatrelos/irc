@@ -28,6 +28,9 @@ typedef struct	s_client
 	char			curr_cmd[MAX_CMD_SIZE + 1];
 	int				size_current_msg;
 	char			hostname[MAX_SIZE_HOSTNAME + 1];
+	char			username[MAX_SIZE_USERNAME + 1];
+	char			realname[MAX_SIZE_REALNAME + 1];
+	char			usermode[MAX_SIZE_USERMODE + 1];
 	t_data_server	*st_data;
 	t_cmd_queue		cmd_queue;
 

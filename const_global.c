@@ -2,5 +2,6 @@
 
 const t_cmd_map	g_str_to_enum_cmd[] =
 {
-	{"NICK", nick_fn}
+	{"NICK", nick_fn},
+	{"USER", user_fn}
 };
