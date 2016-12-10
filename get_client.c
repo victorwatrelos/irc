@@ -1,6 +1,6 @@
 #include "get_client.h"
 
-t_client		*get_client(int server_fd)
+t_client		*get_client(int server_fd, t_data_server *st_data)
 {
 	t_client			*client;
 	struct sockaddr_in	that;
@@ -18,5 +18,6 @@ t_client		*get_client(int server_fd)
 	client->sockfd = sockfd;
 	client->cmd_queue.buff_in = new_circular_buffer(CMD_CIRCULAR_BUFF_SIZE_IN);
 	client->cmd_queue.buff_out = new_circular_buffer(CMD_CIRCULAR_BUFF_SIZE_OUT);
+	client->st_data = st_data;
 	return (client);
 }

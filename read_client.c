@@ -19,9 +19,10 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (msg[i] == '\r')
+		printf("%x-", (int)msg[i]);
+		if (msg[i] == 0x0D)
 			carriage = TRUE;
-		else if (msg[i] == '\n' && carriage)
+		else if (msg[i] == 0x0A && carriage)
 			eol = TRUE;
 		else
 		{
@@ -32,7 +33,7 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 		{
 			if (i + client->size_current_msg > MAX_CMD_SIZE)
 				break ;
-			ft_strncat(client->curr_cmd, msg, i - 2);
+			ft_strncat(client->curr_cmd, msg, i - 1);
 			add_cmd(client);
 		}
 		i++;

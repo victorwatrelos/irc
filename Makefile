@@ -1,5 +1,5 @@
 CC=clang
-FLAGS=-Wall -Wextra
+FLAGS=-Wall -Wextra -g
 LIB=-L./libft -lft_printf -lft_core -lft_list
 NAME=server
 INCLUDES=-I libft/includes -I ./
@@ -13,6 +13,11 @@ SRC=main.c \
 	get_client.c \
 	read_client.c \
 	add_cmd.c \
+	const_global.c \
+	fn/nick.c \
+	utility/str_utils.c \
+	utility/client_utils.c \
+	send_err_cmd.c \
 	failure_exit.c
 
 

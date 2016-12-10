@@ -13,8 +13,11 @@
 #ifndef BOOL_H
 # define BOOL_H
 
-# define FALSE	((t_bool)0)
-# define TRUE	((t_bool)1)
+# include <stdint.h>
+
 typedef uint8_t		t_bool;
+
+# define FALSE		((t_bool)0)
+# define TRUE		((t_bool)1)
 
 #endif
