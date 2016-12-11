@@ -29,7 +29,8 @@ static int	init_fd_set(int sockfd, t_list *clients, t_select *st_select)
 			if (tmp_fd > fd_max)
 				fd_max = tmp_fd;
 			FD_SET(tmp_fd, &(st_select->read));
-			if (get_size_circular_buffer(tmp->cmd_queue.buff_out))
+			if (get_size_circular_buffer(tmp->cmd_queue.buff_out) > 0
+					|| tmp->send_buff.end != tmp->send_buff.start)
 				FD_SET(tmp_fd, &(st_select->write));
 		}
 		clients = clients->next;

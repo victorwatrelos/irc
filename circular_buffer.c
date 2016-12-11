@@ -9,8 +9,9 @@ t_circ_buff	*new_circular_buffer(size_t size)
 		return (NULL);
 	if ((buff = malloc(sizeof(t_circular_buffer))) == NULL)
 		return (NULL);
-	buff->data = data;
 	ft_bzero(buff, sizeof(t_circular_buffer));
+	buff->data = data;
+	buff->max_size = size;
 	return (buff);
 }
 
@@ -45,10 +46,7 @@ void	*pop_front_circular_buffer(t_circ_buff *p_buff)
 	if (buff->size == 0)
 		return (NULL);
 	ret = buff->data[buff->pos_start];
-	if (buff->pos_start == 0)
-		buff->pos_start = buff->max_size - 1;
-	else
-		buff->pos_start = (buff->pos_start - 1);
+	buff->pos_start = (buff->pos_start + 1) % buff->max_size;
 	buff->size--;
 	return (ret);
 }

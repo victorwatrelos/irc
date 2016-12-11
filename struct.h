@@ -7,10 +7,10 @@
 # include <netinet/in.h>
 # include "list.h"
 # include "circular_buffer.h"
+# include "bool.h"
 
 typedef struct	s_cmd_queue
 {
-	t_circ_buff	*buff_in;
 	t_circ_buff	*buff_out;
 }				t_cmd_queue;
 
@@ -20,9 +20,19 @@ typedef struct	s_data_server
 	t_list		*client_list;
 }				t_data_server;
 
+typedef struct	s_send_buff
+{
+	char		buff[SIZE_SEND_BUFF];
+	size_t		start;
+	size_t		end;
+}				t_send_buff;
+
 typedef struct	s_client
 {
 	int				sockfd;
+	t_bool			nick_set;
+	t_bool			username_set;
+	t_bool			logged_in;
 	char			nickname[NICK_MAXSIZE + 1];
 	char			upper_nickname[NICK_MAXSIZE + 1];
 	char			curr_cmd[MAX_CMD_SIZE + 1];
@@ -34,6 +44,7 @@ typedef struct	s_client
 	char			usermode[MAX_SIZE_USERMODE + 1];
 	t_data_server	*st_data;
 	t_cmd_queue		cmd_queue;
+	t_send_buff		send_buff;
 
 }				t_client;
 

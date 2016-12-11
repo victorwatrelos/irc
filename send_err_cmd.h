@@ -2,6 +2,7 @@
 # define SEND_ERR_CMD_H
 
 # include "fn/fn.h"
+# include "get_numeric_response.h"
 
 typedef struct	s_err_map
 {

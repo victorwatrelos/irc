@@ -40,5 +40,7 @@ int		user_fn(const char *param_str, t_client *client)
 	ft_strncpy(client->username, user, MAX_SIZE_USERNAME);
 	ft_strncpy(client->usermode, mode, MAX_SIZE_USERMODE);
 	ft_strncpy(client->realname, realname, MAX_SIZE_REALNAME);
+	client->username_set = TRUE;
+	send_success_login(client);
 	return (CMD_SUCCESS);
 }

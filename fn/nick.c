@@ -23,5 +23,7 @@ int			nick_fn(const char *param_str, t_client *client)
 			return (NICK_BAD_CHAR);
 	ft_strcpy(client->upper_nickname, upper_nickname);
 	ft_strcpy(client->nickname, nickname);
+	client->nick_set = TRUE;
+	send_success_login(client);
 	return (CMD_SUCCESS);
 }

@@ -14,21 +14,7 @@ const size_t		g_err_map_size = sizeof(g_err_map) / sizeof(t_err_map);
 
 static char	*compose_response(const t_err_map *err, t_client *client)
 {
-	char	*res;
-	size_t	final_size;
-
-	final_size = ft_strlen(err->msg) + ft_strlen(err->code) + ft_strlen(client->hostname) + ft_strlen(client->nickname) + 16;
-	res = malloc(final_size);
-	ft_bzero(res, final_size);
-	res[0] = ':';
-	ft_strcat(res, client->hostname);
-	ft_strcat(res, " ");
-	ft_strcat(res, err->code);
-	ft_strcat(res, " * ");
-	ft_strcat(res, client->nickname);
-	ft_strcat(res, " :");
-	ft_strcat(res, err->msg);
-	return (res);
+	return (get_numeric_response(client->hostname, err->code, client->nickname, err->msg));
 }
 
 void		send_err_cmd(int err, t_client *client)
@@ -38,7 +24,6 @@ void		send_err_cmd(int err, t_client *client)
 	char			*res;
 
 
-	printf("error: %d, size: %zu\n", err, g_err_map_size);
 	i = 0;
 	while (i < g_err_map_size)
 	{

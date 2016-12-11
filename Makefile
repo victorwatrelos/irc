@@ -18,7 +18,10 @@ SRC=main.c \
 	fn/user.c \
 	utility/str_utils.c \
 	utility/client_utils.c \
+	utility/send_success_login.c \
+	get_numeric_response.c \
 	send_err_cmd.c \
+	send_to_client.c \
 	failure_exit.c
 
 
@@ -33,11 +36,11 @@ all: $(NAME)
 
 $(NAME): $(OBJ) libft/libft_core.a libft/libft_printf.a libft/libft_list.a
 	$(CC) $(FLAGS) $(INCLUDES) -o $@ $^ $(LIB) $(MLXLIB)
-	echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$(NAME) \033[0mDONE!"
+	echo "\t\xF0\x9F\x8F\x81   Linking \033[35m$(NAME) \033[0mDONE!"
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
-	echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$@ \033[0mDONE!"
+	echo "\t\xF0\x9F\x8F\x81   Compiling \033[34m$@ \033[0mDONE!"
 
 libft/libft_core.a:
 	(cd libft && $(MAKE))

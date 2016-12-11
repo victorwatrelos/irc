@@ -1,16 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_select.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/06/21 18:04:54 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/06/23 19:09:47 by vwatrelo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "server.h"
+
+static void	write_client(t_list **client_lst, t_list *client_elem, t_client *client)
+{
+	if (send_to_client(client) < 0)
+		failure_exit_client(client_elem, client_lst);
+}
 
 static void	check_client(t_select *st_select, t_list **client_lst_pointer)
 {
@@ -25,6 +19,8 @@ static void	check_client(t_select *st_select, t_list **client_lst_pointer)
 		next = client_lst->next;
 		if (FD_ISSET(client->sockfd, &(st_select->read)))
 			read_client(client_lst, client_lst_pointer);
+		if (FD_ISSET(client->sockfd, &(st_select->write)))
+			write_client(client_lst_pointer, client_lst, client);
 		client_lst = next;
 	}
 }
