@@ -7,7 +7,8 @@ const t_err_map		g_err_map[] =
 	{NICK_BAD_CHAR, "Erroneous nickname", "432"},
 	{NICK_ALREADY_TAKEN, "Nickname is already in use", "433"},
 	{ERR_NEEDMOREPARAMS, "Not enough parameters", "461"},
-	{ERR_ALREADYREGISTRED, "Unauthorized command (already registered)", "462"}
+	{ERR_ALREADYREGISTRED, "Unauthorized command (already registered)", "462"},
+	{ERR_NOSUCHCHANNEL, "No such channel", "403"},
 };
 
 const size_t		g_err_map_size = sizeof(g_err_map) / sizeof(t_err_map);

@@ -24,13 +24,11 @@ void	send_success_login(t_client *client)
 	push_back_circular_buffer(client->cmd_queue.buff_out, response);
 
 	hostmsg = get_host_msg(client->hostname);
-	printf("hostmsg: %s\n", hostmsg);
 	response = get_numeric_response(client->hostname, "002", client->nickname, hostmsg);
 	push_back_circular_buffer(client->cmd_queue.buff_out, response);
 	free(hostmsg);
 
 	response = get_numeric_response(client->hostname, "003", client->nickname, "This server was created sometime");
-	printf("resp: %s\n", response);
 	push_back_circular_buffer(client->cmd_queue.buff_out, response);
 
 	response = get_numeric_response(client->hostname, "004", client->nickname, "42server 1.0 0 0");

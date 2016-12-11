@@ -16,7 +16,9 @@ SRC=main.c \
 	const_global.c \
 	fn/nick.c \
 	fn/user.c \
+	fn/join.c \
 	utility/str_utils.c \
+	utility/channel.c \
 	utility/client_utils.c \
 	utility/send_success_login.c \
 	get_numeric_response.c \

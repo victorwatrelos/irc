@@ -2,7 +2,7 @@
 
 static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 {
-	int		i;
+	size_t	i;
 	int		end;
 	int		start;
 	char	final_cmd_str[MAX_CMD_SIZE + 1];
@@ -17,7 +17,7 @@ static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 	ft_strncpy(final_cmd_str, str_cmd + start, size);
 	final_cmd_str[size] = '\0';
 	i = 0;
-	while (i < SIZE_STR_TO_ENUM_CMD)
+	while (i < g_str_to_enum_cmd_size)
 	{
 		if (ft_strcmp(g_str_to_enum_cmd[i].cmd_str, final_cmd_str) == 0)
 			return (g_str_to_enum_cmd[i].cmd_fn);

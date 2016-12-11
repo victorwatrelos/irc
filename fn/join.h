@@ -1,6 +1,12 @@
 #ifndef JOIN_H
 # define JOIN_H
 
-int		join_fn(const char *param_str, t_client *client);
+# include "global.h"
+# include "struct.h"
+# include "../utility/str_utils.h"
+# include "../utility/channel.h"
+# include "fn.h"
+# include <libft.h>
+
 
 #endif

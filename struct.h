@@ -18,6 +18,7 @@ typedef struct	s_data_server
 {
 	int			nb_client;
 	t_list		*client_list;
+	t_list		*channel_list;
 }				t_data_server;
 
 typedef struct	s_send_buff
@@ -27,21 +28,28 @@ typedef struct	s_send_buff
 	size_t		end;
 }				t_send_buff;
 
+typedef struct	s_channel
+{
+	char		name[MAX_SIZE_CHANNEL_NAME + 1];
+	char		upper_name[MAX_SIZE_CHANNEL_NAME + 1];
+	t_list		*client_lst;
+}				t_channel;
+
 typedef struct	s_client
 {
-	int				sockfd;
 	t_bool			nick_set;
 	t_bool			username_set;
 	t_bool			logged_in;
 	char			nickname[NICK_MAXSIZE + 1];
 	char			upper_nickname[NICK_MAXSIZE + 1];
 	char			curr_cmd[MAX_CMD_SIZE + 1];
-	int				size_current_msg;
 	char			hostname[MAX_SIZE_HOSTNAME + 1];
 	char			username[MAX_SIZE_USERNAME + 1];
 	char			upper_username[MAX_SIZE_USERNAME + 1];
 	char			realname[MAX_SIZE_REALNAME + 1];
 	char			usermode[MAX_SIZE_USERMODE + 1];
+	int				sockfd;
+	int				size_current_msg;
 	t_data_server	*st_data;
 	t_cmd_queue		cmd_queue;
 	t_send_buff		send_buff;
