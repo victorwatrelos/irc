@@ -10,7 +10,9 @@
 typedef void	t_circ_buff;
 
 t_circ_buff		*new_circular_buffer(size_t size);
+void			delete_circular_buffer(t_circ_buff *p_buff);
 void			*pop_front_circular_buffer(t_circ_buff *p_buff);
 int				push_back_circular_buffer(t_circ_buff *p_buff, void *elem);
+size_t			get_size_circular_buffer(t_circ_buff *p_buff);
 
 #endif

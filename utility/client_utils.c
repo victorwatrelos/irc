@@ -18,6 +18,24 @@ t_bool		is_nick_free(t_list *client_lst, const char *nick)
 	return (TRUE);
 }
 
+t_bool		is_username_free(t_list *client_lst, const char *upper_username)
+{
+	t_client	*client;
+	t_list		*next;
+
+	while (client_lst)
+	{
+		next = client_lst->next;
+		client = client_lst->content;
+		if (ft_strncmp(client->upper_username, upper_username, MAX_SIZE_USERNAME) == 0)
+		{
+			return (FALSE);
+		}
+		client_lst = next;
+	}
+	return (TRUE);
+}
+
 t_bool		is_nick_valid(const char *nick)
 {
 	int			i;

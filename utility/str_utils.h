@@ -3,6 +3,7 @@
 
 # include "../bool.h"
 # include <libft.h>
+# define LIST_SPACE_CHAR " \t\r\n"
 
 int			jump_end_of_space(const char *str, int pos);
 int			jump_to_space(const char *str, int pos);

@@ -29,8 +29,8 @@ static int	init_fd_set(int sockfd, t_list *clients, t_select *st_select)
 			if (tmp_fd > fd_max)
 				fd_max = tmp_fd;
 			FD_SET(tmp_fd, &(st_select->read));
-			//if (has_elem(tmp->send))
-			//	FD_SET(tmp_fd, &(st_select->write));
+			if (get_size_circular_buffer(tmp->cmd_queue.buff_out))
+				FD_SET(tmp_fd, &(st_select->write));
 		}
 		clients = clients->next;
 	}
@@ -56,7 +56,6 @@ static int	select_wrapper(int sockfd, t_select *st_select, t_data_server *st_dat
 	}
 	if (ret > 0)
 		check_select(st_select, st_data);
-	//TODO execute irc command queue
 	return (TRUE);
 }
 

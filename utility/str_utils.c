@@ -2,14 +2,14 @@
 
 int		jump_end_of_space(const char *str, int pos)
 {
-	while (str[pos] == ' ' || str[pos] == '\t')
+	while (ft_strchr(LIST_SPACE_CHAR, str[pos]) != NULL)
 		pos++;
 	return (pos);
 }
 
 int		jump_to_space(const char *str, int pos)
 {
-	while (str[pos] != ' ' && str[pos] != '\t' && str[pos] != '\0')
+	while (str[pos] != '\0' && ft_strchr(LIST_SPACE_CHAR, str[pos]) == NULL)
 		pos++;
 	return (pos);
 }

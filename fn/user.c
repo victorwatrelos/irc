@@ -8,6 +8,7 @@ int		user_fn(const char *param_str, t_client *client)
 	char		*user;
 	char		*mode;
 	char		*realname;
+	char		upper_username[MAX_SIZE_USERNAME + 1];
 	int			i;
 
 	i = 0;
@@ -27,8 +28,17 @@ int		user_fn(const char *param_str, t_client *client)
 			mode = ft_strndup(param, size);
 		else if (i == 3)
 			realname = ft_strndup(param, size);
+
+		param_str = next;
 		i++;
 	}
-	printf("user: %s, mode: %s, realname: %s\n", user, mode, realname);
+	ft_strncpy(upper_username, user, MAX_SIZE_USERNAME);
+	to_upper_rfc(upper_username);
+	if (!is_username_free(client->st_data->client_list, upper_username))
+		return (ERR_ALREADYREGISTRED);
+	ft_strncpy(client->upper_username, upper_username, MAX_SIZE_USERNAME);
+	ft_strncpy(client->username, user, MAX_SIZE_USERNAME);
+	ft_strncpy(client->usermode, mode, MAX_SIZE_USERMODE);
+	ft_strncpy(client->realname, realname, MAX_SIZE_REALNAME);
 	return (CMD_SUCCESS);
 }

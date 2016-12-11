@@ -14,6 +14,15 @@ t_circ_buff	*new_circular_buffer(size_t size)
 	return (buff);
 }
 
+void	delete_circular_buffer(t_circ_buff *p_buff)
+{
+	t_circular_buffer	*buff;
+
+	buff = p_buff;
+	free(buff->data);
+	free(buff);
+}
+
 int		push_back_circular_buffer(t_circ_buff *p_buff, void *elem)
 {
 	t_circular_buffer	*buff;
@@ -42,4 +51,9 @@ void	*pop_front_circular_buffer(t_circ_buff *p_buff)
 		buff->pos_start = (buff->pos_start - 1);
 	buff->size--;
 	return (ret);
+}
+
+size_t	get_size_circular_buffer(t_circ_buff *p_buff)
+{
+	return (((t_circular_buffer *)p_buff)->size);
 }

@@ -8,5 +8,6 @@
 
 t_bool		is_nick_valid(const char *nick);
 t_bool		is_nick_free(t_list *client_lst, const char *nick);
+t_bool		is_username_free(t_list *client_lst, const char *upper_username);
 
 #endif

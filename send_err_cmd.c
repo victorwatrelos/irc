@@ -6,9 +6,11 @@ const t_err_map		g_err_map[] =
 	{NICK_TOO_LONG, "Erroneous nickname", "432"},
 	{NICK_BAD_CHAR, "Erroneous nickname", "432"},
 	{NICK_ALREADY_TAKEN, "Nickname is already in use", "433"},
-	{ERR_NEEDMOREPARAMS, "Unauthorized command (already registered)", "461"},
+	{ERR_NEEDMOREPARAMS, "Not enough parameters", "461"},
 	{ERR_ALREADYREGISTRED, "Unauthorized command (already registered)", "462"}
 };
+
+const size_t		g_err_map_size = sizeof(g_err_map) / sizeof(t_err_map);
 
 static char	*compose_response(const t_err_map *err, t_client *client)
 {
@@ -31,13 +33,14 @@ static char	*compose_response(const t_err_map *err, t_client *client)
 
 void		send_err_cmd(int err, t_client *client)
 {
-	int				i;
+	size_t			i;
 	const t_err_map	*err_map;
 	char			*res;
 
 
+	printf("error: %d, size: %zu\n", err, g_err_map_size);
 	i = 0;
-	while (i < SIZE_G_ERR_MAP)
+	while (i < g_err_map_size)
 	{
 		err_map = g_err_map + i;
 		if (err == err_map->err)
