@@ -6,6 +6,18 @@ static int	add_to_chan(t_channel *channel, t_client *client)
 	return (CMD_SUCCESS);
 }
 
+static t_channel	*create_channel(const char *channel_name, const char *upper_channel_name)
+{
+	t_channel		*chan;
+
+	if ((chan = malloc(sizeof(t_channel))) == NULL)
+		return (NULL);
+	ft_bzero(chan, sizeof(t_channel));
+	ft_strcpy(chan->name, channel_name);
+	ft_strcpy(chan->upper_name, upper_channel_name);
+	return (chan);
+}
+
 static int	join_channel(const char *join_channel, t_list **channel_list, t_client *client)
 {
 	t_list		*channel_elem;
@@ -24,6 +36,9 @@ static int	join_channel(const char *join_channel, t_list **channel_list, t_clien
 		}
 		channel_elem = channel_elem->next;
 	}
+	if ((channel = create_channel(join_channel, upper_channel_name)) == NULL)
+		return (UNEXPECTED_ERROR);
+	add_to_chan(channel, client);
 	return (CMD_SUCCESS);
 }
 
@@ -66,8 +81,11 @@ int		join_fn(const char *param_str, t_client *client)
 		}
 		param_str++;
 	}
-	join(start_param, param_str, client);
 	if (i <= 0)
 		return (ERR_NEEDMOREPARAMS);
+	if ((i = join(start_param, param_str, client)) != CMD_SUCCESS)
+	{
+		client->err[0] = 
+	}
 	return (CMD_SUCCESS);
 }

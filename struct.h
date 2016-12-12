@@ -53,6 +53,7 @@ typedef struct	s_client
 	t_data_server	*st_data;
 	t_cmd_queue		cmd_queue;
 	t_send_buff		send_buff;
+	t_list			*err_list;
 
 }				t_client;
 
@@ -71,5 +72,15 @@ typedef struct	s_cmd_map
 	const char	cmd_str[MAX_SIZE_CMD_STR];
 	t_cmd_fn	cmd_fn;
 }				t_cmd_map;
+
+typedef struct	s_param_numeric_response
+{
+	const char	*hostname;
+	const char	*nickname;
+	const char	*code;
+	const char	*msg;
+	const char	**param;
+	size_t		nb_param;
+}				t_param_numeric_response;
 
 #endif
