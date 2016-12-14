@@ -2,6 +2,17 @@
 
 static int	add_to_chan(t_channel *channel, t_client *client)
 {
+	t_list		*client_lst;
+	t_client	*tmp_client;
+
+	client_lst = channel->client_lst;
+	while (client_lst)
+	{
+		tmp_client = client_lst->content;
+		if (ft_strcmp(tmp_client->upper_nickname, client->upper_nickname) == 0)
+			return (CMD_SUCCESS);
+		client_lst = client_lst->next;
+	}
 	ft_lstadd(&(channel->client_lst), ft_lstnew(client, sizeof(t_client)));
 	return (CMD_SUCCESS);
 }
@@ -61,31 +72,29 @@ static int	join(const char *start, const char *end, t_client *client)
 
 int		join_fn(const char *param_str, t_client *client)
 {
-	int			i;
 	const char	*end_param;
 	const char	*end_params;
 	const char	*start_param;
 
-	i = 0;
 	param_str = param_str + jump_end_of_space(param_str, 0);
 	end_params = param_str + jump_to_space(param_str, 0);
 	start_param = param_str;
+	printf("end_params: %p, start_param: %p\n", end_params, start_param);
+	if (end_params == start_param)
+		return (ERR_NEEDMOREPARAMS);
 	while (param_str < end_params)
 	{
 		if (*param_str == ',')
 		{
 			end_param = param_str;
 			join(start_param, end_param, client);
-			i++;
 			start_param = end_param + 1;
 		}
 		param_str++;
 	}
-	if (i <= 0)
-		return (ERR_NEEDMOREPARAMS);
-	if ((i = join(start_param, param_str, client)) != CMD_SUCCESS)
-	{
-		client->err[0] = 
-	}
+	if ((param_str - start_param) == 1 && param_str[0] == '0')
+		leave_all(client);
+	else
+		join(start_param, param_str, client);
 	return (CMD_SUCCESS);
 }

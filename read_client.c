@@ -29,8 +29,11 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 	int		i;
 	t_bool	carriage;
 	t_bool	eol;
+	t_bool	no_cmd;
 
-	carriage = get_carriage_flag(client);
+	no_cmd = TRUE;
+	//carriage = get_carriage_flag(client);
+	carriage = TRUE;
 	eol = FALSE;
 	i = 0;
 	while (i < size)
@@ -41,7 +44,7 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 			eol = TRUE;
 		else
 		{
-			carriage = FALSE;
+	//		carriage = FALSE;
 			eol = FALSE;
 		}
 		if (carriage && eol)
@@ -50,16 +53,19 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 			if (i + client->size_current_msg > MAX_CMD_SIZE)//Command too long
 			{
 				reset_client_msg(client);
+				no_cmd = FALSE;
 				break ;
 			}
 			ft_strncpy((client->curr_cmd + client->size_current_msg), msg, i);
 			client->curr_cmd[i + client->size_current_msg] = '\0';
 			add_cmd(client);
+			reset_client_msg(client);
+			no_cmd = FALSE;
 			break ;
 		}
 		i++;
 	}
-	if (i >= size)
+	if (no_cmd)
 	{
 		add_to_client(client, msg, size);
 		return ;

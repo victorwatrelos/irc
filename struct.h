@@ -73,14 +73,4 @@ typedef struct	s_cmd_map
 	t_cmd_fn	cmd_fn;
 }				t_cmd_map;
 
-typedef struct	s_param_numeric_response
-{
-	const char	*hostname;
-	const char	*nickname;
-	const char	*code;
-	const char	*msg;
-	const char	**param;
-	size_t		nb_param;
-}				t_param_numeric_response;
-
 #endif
