@@ -2,7 +2,7 @@
 
 int		jump_end_of_space(const char *str, int pos)
 {
-	while (ft_strchr(LIST_SPACE_CHAR, str[pos]) != NULL)
+	while (str[pos] != '\0' && ft_strchr(LIST_SPACE_CHAR, str[pos]) != NULL)
 		pos++;
 	return (pos);
 }

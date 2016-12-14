@@ -46,7 +46,6 @@ static int	select_wrapper(int sockfd, t_select *st_select, t_data_server *st_dat
 
 	tv.tv_sec = TIME_WAIT_SELECT_US / 1000000;
 	tv.tv_usec = TIME_WAIT_SELECT_US % 1000000;
-	printf("tvsec: %ld, tvusec: %d\n", tv.tv_sec, tv.tv_usec);
 	fd_max = init_fd_set(sockfd, st_data->client_list, st_select) + 1;
 	ret = select(fd_max + 1, &(st_select->read), &(st_select->write),
 			NULL, &tv);

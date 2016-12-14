@@ -76,11 +76,13 @@ int		join_fn(const char *param_str, t_client *client)
 	const char	*end_params;
 	const char	*start_param;
 
+	printf("first end of space: |%d|, first to next space: |%d|\n",
+			jump_end_of_space(param_str, 0),
+			jump_to_space(param_str, jump_end_of_space(param_str + 1, 0)));
 	param_str = param_str + jump_end_of_space(param_str, 0);
 	end_params = param_str + jump_to_space(param_str, 0);
 	start_param = param_str;
-	printf("end_params: %p, start_param: %p\n", end_params, start_param);
-	if (end_params == start_param)
+	printf("end: %p, start: %p\n", 
 		return (ERR_NEEDMOREPARAMS);
 	while (param_str < end_params)
 	{
