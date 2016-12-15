@@ -12,6 +12,7 @@ void	failure_exit_client(t_list *client_elem, t_list **lst_client)
 	void		*data;
 
 	client = (t_client *)client_elem->content;
+	leave_all(client);
 	while ((data = pop_front_circular_buffer(client->cmd_queue.buff_out)))
 		free(data);
 	close(client->sockfd);

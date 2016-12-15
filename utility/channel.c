@@ -20,6 +20,7 @@ void	remove_one(t_channel *channel, t_client *p_client)
 	{
 		if (client_lst->content == p_client)
 		{
+			printf("remove %s\n", p_client->nickname);
 			ft_lstdelone(ptn_client_lst, client_lst);
 			return ;
 		}

@@ -14,6 +14,7 @@ static int	add_to_chan(t_channel *channel, t_client *client)
 		client_lst = client_lst->next;
 	}
 	ft_lstadd(&(channel->client_lst), ft_lstnew(client, sizeof(t_client)));
+	send_rpl_namereply(channel->client_lst, client, channel->name);
 	return (CMD_SUCCESS);
 }
 
@@ -41,7 +42,7 @@ static int	join_channel(const char *join_channel, t_list **channel_list, t_clien
 	while (channel_elem)
 	{
 		channel = channel_elem->content;
-		if (upper_channel_name == channel->upper_name)
+		if (ft_strcmp(upper_channel_name, channel->upper_name) == 0)
 		{
 			return (add_to_chan(channel, client));
 		}
@@ -49,6 +50,7 @@ static int	join_channel(const char *join_channel, t_list **channel_list, t_clien
 	}
 	if ((channel = create_channel(join_channel, upper_channel_name)) == NULL)
 		return (UNEXPECTED_ERROR);
+	ft_lstadd(channel_list, ft_lstnew(channel, sizeof(t_channel)));
 	add_to_chan(channel, client);
 	return (CMD_SUCCESS);
 }
@@ -60,12 +62,17 @@ static int	join(const char *start, const char *end, t_client *client)
 
 	size_channel = end - start;
 	if (size_channel > MAX_SIZE_CHANNEL_NAME)
+	{
+		send_nosuchchannel(channel_name, client);
 		return (ERR_NOSUCHCHANNEL);
+	}
 	ft_memcpy(channel_name, start, size_channel);
 	channel_name[size_channel] = '\0';
-	printf("Channel name: %s\n", channel_name);
 	if (!is_channel_name_valid(channel_name))
-		return (ERR_NOSUCHCHANNEL);
+	{
+		send_nosuchchannel(channel_name, client);
+		return (CMD_SUCCESS);
+	}
 	join_channel(channel_name, &(client->st_data->channel_list), client);
 	return (CMD_SUCCESS);
 }
@@ -76,13 +83,10 @@ int		join_fn(const char *param_str, t_client *client)
 	const char	*end_params;
 	const char	*start_param;
 
-	printf("first end of space: |%d|, first to next space: |%d|\n",
-			jump_end_of_space(param_str, 0),
-			jump_to_space(param_str, jump_end_of_space(param_str + 1, 0)));
 	param_str = param_str + jump_end_of_space(param_str, 0);
 	end_params = param_str + jump_to_space(param_str, 0);
 	start_param = param_str;
-	printf("end: %p, start: %p\n", 
+	if (end_params == start_param)
 		return (ERR_NEEDMOREPARAMS);
 	while (param_str < end_params)
 	{
@@ -94,7 +98,7 @@ int		join_fn(const char *param_str, t_client *client)
 		}
 		param_str++;
 	}
-	if ((param_str - start_param) == 1 && param_str[0] == '0')
+	if ((end_params - start_param) == 1 && start_param[0] == '0')
 		leave_all(client);
 	else
 		join(start_param, param_str, client);

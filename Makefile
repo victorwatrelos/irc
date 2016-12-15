@@ -13,10 +13,12 @@ SRC=main.c \
 	get_client.c \
 	read_client.c \
 	add_cmd.c \
+	send_cannotsendchan.c \
 	const_global.c \
 	fn/nick.c \
 	fn/user.c \
 	fn/join.c \
+	fn/privmsg.c \
 	utility/str_utils.c \
 	utility/channel.c \
 	utility/client_utils.c \
@@ -24,6 +26,9 @@ SRC=main.c \
 	get_numeric_response.c \
 	send_err_cmd.c \
 	send_to_client.c \
+	send_nosuchchannel.c \
+	send_cannotsendchan.c \
+	send_msg_to_client.c \
 	failure_exit.c
 
 

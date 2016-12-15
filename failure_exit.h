@@ -6,6 +6,7 @@
 # include <libft.h>
 # include <list.h>
 # include "struct.h"
+# include "utility/channel.h"
 
 void	failure_exit(char const *msg);
 void	failure_exit_client(t_list *client, t_list **lst_client);

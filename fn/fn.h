@@ -17,5 +17,6 @@
 int		nick_fn(const char *param_str, t_client *client);
 int		user_fn(const char *param_str, t_client *client);
 int		join_fn(const char *param_str, t_client *client);
+void	privmsg_fn(const char *param_str, t_client *client);
 
 #endif
