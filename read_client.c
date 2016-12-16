@@ -73,7 +73,7 @@ static void	cat_cmd(t_client *client, const char *msg, int size)
 	cat_cmd(client, msg + i, size - i);
 }
 
-void		read_client(t_list *client_elem, t_list **lst_client)
+t_bool		read_client(t_list *client_elem, t_list **lst_client)
 {
 	int			ret;
 	char		buff[MAX_CMD_SIZE + 1];
@@ -84,8 +84,9 @@ void		read_client(t_list *client_elem, t_list **lst_client)
 	{
 		ft_printf("%rClient %d disconnect\n", client->sockfd);
 		failure_exit_client(client_elem, lst_client);
-		return;
+		return (FALSE);
 	}
 	buff[ret] = '\0';
 	cat_cmd(client, buff, ret);
+	return (TRUE);
 }

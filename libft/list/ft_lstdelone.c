@@ -23,6 +23,7 @@ static void	tmp_norm(t_list *prvs, t_list *elem)
 		{
 			prvs->next = cur->next;
 			free(elem);
+			return ;
 		}
 		prvs = cur;
 		cur = cur->next;

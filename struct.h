@@ -14,11 +14,20 @@ typedef struct	s_cmd_queue
 	t_circ_buff	*buff_out;
 }				t_cmd_queue;
 
+typedef struct	s_select
+{
+	fd_set		read;
+	fd_set		write;
+	int			new_connection;
+	int			sockfd;
+}				t_select;
+
 typedef struct	s_data_server
 {
 	int			nb_client;
 	t_list		*client_list;
 	t_list		*channel_list;
+	t_select	*st_select;
 }				t_data_server;
 
 typedef struct	s_send_buff
@@ -56,14 +65,6 @@ typedef struct	s_client
 	t_list			*err_list;
 
 }				t_client;
-
-typedef struct	s_select
-{
-	fd_set		read;
-	fd_set		write;
-	int			new_connection;
-	int			sockfd;
-}				t_select;
 
 typedef int (*t_cmd_fn)(const char *, t_client *);
 

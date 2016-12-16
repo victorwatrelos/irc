@@ -37,8 +37,9 @@ char	*ft_strndup(const char *str, size_t size)
 {
 	char	*res;
 
-	res = malloc(size);
+	res = malloc(size + 1);
 	ft_strncpy(res, str, size);
+	res[size] = '\0';
 	return (res);
 }
 

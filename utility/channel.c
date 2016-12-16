@@ -13,7 +13,9 @@ void	remove_one(t_channel *channel, t_client *p_client)
 {
 	t_list		*client_lst;
 	t_list		**ptn_client_lst;
+	t_list		*next;
 
+	printf("Channel: %p\n", channel);
 	ptn_client_lst = &(channel->client_lst);
 	client_lst = *ptn_client_lst;
 	while (client_lst)

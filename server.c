@@ -64,6 +64,7 @@ int			launch_select(int sockfd, t_data_server *s_data)
 	t_select		st_select;
 
 	st_select.sockfd = sockfd;
+	s_data->st_select = &st_select;
 	while (1)
 	{
 		if (!select_wrapper(sockfd, &st_select, s_data))

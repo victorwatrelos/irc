@@ -23,12 +23,15 @@ SRC=main.c \
 	utility/channel.c \
 	utility/client_utils.c \
 	utility/send_success_login.c \
+	utility/params.c \
 	get_numeric_response.c \
 	send_err_cmd.c \
 	send_to_client.c \
 	send_nosuchchannel.c \
 	send_cannotsendchan.c \
 	send_msg_to_client.c \
+	privmsg_construct.c \
+	send_to_chan.c \
 	failure_exit.c
 
 

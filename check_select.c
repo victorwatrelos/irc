@@ -18,7 +18,13 @@ static void	check_client(t_select *st_select, t_list **client_lst_pointer)
 		client = client_lst->content;
 		next = client_lst->next;
 		if (FD_ISSET(client->sockfd, &(st_select->read)))
-			read_client(client_lst, client_lst_pointer);
+		{
+			if (!read_client(client_lst, client_lst_pointer))
+			{
+				check_client(st_select, client_lst_pointer);
+				return ;
+			}
+		}
 		if (FD_ISSET(client->sockfd, &(st_select->write)))
 			write_client(client_lst_pointer, client_lst, client);
 		client_lst = next;

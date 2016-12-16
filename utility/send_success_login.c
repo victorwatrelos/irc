@@ -5,7 +5,7 @@ static char	*get_host_msg(const char *hostname)
 	size_t	final_size;
 	char	*res;
 
-	final_size = (sizeof(START_HOST_MSG) - 1 + sizeof(END_HOST_MSG) - 1) + ft_strlen(hostname);
+	final_size = (sizeof(START_HOST_MSG) - 1 + sizeof(END_HOST_MSG)) + ft_strlen(hostname);
 	res = malloc(sizeof(char) * final_size);
 	ft_strcpy(res, START_HOST_MSG);
 	ft_strcat(res, hostname);

@@ -70,7 +70,7 @@ void		send_rpl_namereply(t_list *client_lst, t_client *dest, const char *chan_na
 	t_list	*client_elem;
 	char	*response;
 
-	final_size = ft_strlen(chan_name) + 4;
+	final_size = ft_strlen(chan_name) + 6;
 	client_elem = client_lst;
 	while (client_elem)
 	{
