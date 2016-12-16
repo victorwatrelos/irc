@@ -56,12 +56,11 @@ static int	join_channel(const char *join_channel, t_list **channel_list, t_clien
 	return (CMD_SUCCESS);
 }
 
-static int	join(const char *start, const char *end, t_client *client)
+static int	join(const char *channel_name, t_client *client)
 {
 	size_t		size_channel;
-	char		channel_name[MAX_SIZE_CHANNEL_NAME + 1];
 
-	size_channel = end - start;
+	size_channel = ft_strlen(channel_name);
 	if (size_channel > MAX_SIZE_CHANNEL_NAME)
 	{
 		send_nosuchchannel(channel_name, client);
@@ -78,8 +77,23 @@ static int	join(const char *start, const char *end, t_client *client)
 	return (CMD_SUCCESS);
 }
 
+static t_bool	callback(const char *param, t_client *client, t_bool last)
+{
+	if (last && ft_strcmp(param, "0") == 0)
+	{
+		leave_all(client);
+		return (TRUE);
+	}
+	join(param, client);	
+	return (TRUE);
+}
+
 int		join_fn(const char *param_str, t_client *client)
 {
+	if (params_lst(param_str, callback, client) == 0)
+		return (ERR_NEEDMOREPARAMS);
+	return (CMD_SUCCESS);
+	/*
 	const char	*end_param;
 	const char	*end_params;
 	const char	*start_param;
@@ -104,4 +118,5 @@ int		join_fn(const char *param_str, t_client *client)
 	else
 		join(start_param, param_str, client);
 	return (CMD_SUCCESS);
+	*/
 }
