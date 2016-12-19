@@ -21,6 +21,7 @@ int		params_lst(const char *param_str, t_params_lst callback, void *data)
 			end_param = param_str;
 			ft_strncpy(param, start_param, end_param - start_param);
 			param[end_param - start_param] = '\0';
+			param[MAX_CMD_SIZE] = '\0';
 			if (!callback(param, data, FALSE))
 				return (i + 1);
 			i++;
@@ -29,6 +30,7 @@ int		params_lst(const char *param_str, t_params_lst callback, void *data)
 		param_str++;
 	}
 	ft_strncpy(param, start_param, param_str - start_param);
+	param[param_str - start_param] = '\0';
 	callback(param, data, TRUE);
 	return (i + 1);
 }

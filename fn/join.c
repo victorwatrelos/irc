@@ -66,8 +66,6 @@ static int	join(const char *channel_name, t_client *client)
 		send_nosuchchannel(channel_name, client);
 		return (ERR_NOSUCHCHANNEL);
 	}
-	ft_memcpy(channel_name, start, size_channel);
-	channel_name[size_channel] = '\0';
 	if (!is_channel_name_valid(channel_name))
 	{
 		send_nosuchchannel(channel_name, client);
@@ -77,8 +75,11 @@ static int	join(const char *channel_name, t_client *client)
 	return (CMD_SUCCESS);
 }
 
-static t_bool	callback(const char *param, t_client *client, t_bool last)
+static t_bool	callback(const char *param, void *p_client, t_bool last)
 {
+	t_client	*client;
+
+	client = p_client;
 	if (last && ft_strcmp(param, "0") == 0)
 	{
 		leave_all(client);
@@ -93,30 +94,4 @@ int		join_fn(const char *param_str, t_client *client)
 	if (params_lst(param_str, callback, client) == 0)
 		return (ERR_NEEDMOREPARAMS);
 	return (CMD_SUCCESS);
-	/*
-	const char	*end_param;
-	const char	*end_params;
-	const char	*start_param;
-
-	param_str = param_str + jump_end_of_space(param_str, 0);
-	end_params = param_str + jump_to_space(param_str, 0);
-	start_param = param_str;
-	if (end_params == start_param)
-		return (ERR_NEEDMOREPARAMS);
-	while (param_str < end_params)
-	{
-		if (*param_str == ',')
-		{
-			end_param = param_str;
-			join(start_param, end_param, client);
-			start_param = end_param + 1;
-		}
-		param_str++;
-	}
-	if ((end_params - start_param) == 1 && start_param[0] == '0')
-		leave_all(client);
-	else
-		join(start_param, param_str, client);
-	return (CMD_SUCCESS);
-	*/
 }
