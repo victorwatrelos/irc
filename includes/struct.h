@@ -2,12 +2,12 @@
 # define STRUCT_H
 
 # include "global.h"
+# include "bool.h"
 # include <sys/socket.h>
 # include <sys/time.h>
 # include <netinet/in.h>
-# include "list.h"
-# include "circular_buffer.h"
-# include "bool.h"
+# include <list.h>
+# include <circular_buffer.h>
 
 typedef struct	s_cmd_queue
 {

@@ -1,68 +1,24 @@
 CC=clang
-FLAGS=-Wall -Wextra -g
-LIB=-L./libft -lft_printf -lft_core -lft_list
-NAME=server
-INCLUDES=-I libft/includes -I ./
-
-SRC=main.c \
-	circular_buffer.c \
-	init_server.c \
-	server.c \
-	server2.c \
-	check_select.c \
-	get_client.c \
-	read_client.c \
-	add_cmd.c \
-	send_cannotsendchan.c \
-	const_global.c \
-	fn/nick.c \
-	fn/user.c \
-	fn/join.c \
-	fn/privmsg.c \
-	utility/str_utils.c \
-	utility/channel.c \
-	utility/client_utils.c \
-	utility/send_success_login.c \
-	utility/params.c \
-	get_numeric_response.c \
-	send_err_cmd.c \
-	send_to_client.c \
-	send_nosuchchannel.c \
-	send_cannotsendchan.c \
-	send_msg_to_client.c \
-	privmsg_construct.c \
-	send_to_chan.c \
-	failure_exit.c
-
-
-HEADER=$(SRC:.c=.h)
-
-OBJ=$(SRC:.c=.o)
-
-all: $(NAME)
 
 .PHONY: clean fclean all re
 .SILENT:
 
-$(NAME): $(OBJ) libft/libft_core.a libft/libft_printf.a libft/libft_list.a
-	$(CC) $(FLAGS) $(INCLUDES) -o $@ $^ $(LIB) $(MLXLIB)
-	echo "\t\xF0\x9F\x8F\x81   Linking \033[35m$(NAME) \033[0mDONE!"
-
-%.o: %.c
-	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
-	echo "\t\xF0\x9F\x8F\x81   Compiling \033[34m$@ \033[0mDONE!"
-
-libft/libft_core.a:
-	(cd libft && $(MAKE))
+all:
+	make -C libft
+	make -C utility
+	make -C circular_buffer
+	make -C server
 
 clean:
-	rm -rf $(OBJ)
-	echo "\t\xF0\x9F\x92\xA3   Cleaning"
-	(cd libft && $(MAKE) clean)
+	make clean -C libft
+	make clean -C utility
+	make clean -C circular_buffer
+	make clean -C server
 
-fclean: clean
-	rm -rf $(NAME)
-	echo "\t\xF0\x9F\x9A\xBD   Full Clean"
-	(cd libft && $(MAKE) fclean)
+fclean:
+	make fclean -C libft
+	make fclean -C utility
+	make fclean -C circular_buffer
+	make fclean -C server
 
 re: fclean all
