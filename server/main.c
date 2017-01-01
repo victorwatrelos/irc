@@ -1,5 +1,5 @@
 #include "network/init_server.h"
-# include "network/server.h"
+#include "network/server.h"
 #include "libft.h"
 
 int		test_valid(const char *av)
@@ -34,16 +34,17 @@ int		parse_arg(int ac, const char **av)
 		if (tmp >= 0)
 			return (tmp);
 		else
-			ft_printf("%rPort must be between 0 - %d and composed of digit\n", 0xFFFF);
+			ft_printf("%rPort must be between 0 - %d and composed of digit\n",
+					0xFFFF);
 	}
 	ft_printf("%rServer starting on default port %d\n", port);
 	return (port);
 }
 
-int main(int argc, const char **argv)
+int		main(int argc, const char **argv)
 {
-	int		sockfd;
-	int		port;
+	int				sockfd;
+	int				port;
 	t_data_server	d_server;
 
 	port = parse_arg(argc, argv);

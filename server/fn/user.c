@@ -17,9 +17,6 @@ int		user_fn(const char *param_str, t_client *client)
 		param = next_param(param_str, &size, &next);
 		if (param == NULL)
 			return (ERR_NEEDMOREPARAMS);
-		/*
-		 * A switch would be better, but the Norm doesn't authorized it
-		 */
 		if (size > 512)
 			return (UNEXPECTED_ERROR);
 		if (i == 0)

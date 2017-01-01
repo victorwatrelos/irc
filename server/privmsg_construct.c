@@ -2,7 +2,6 @@
 
 char	*get_priv_msg(const char *msg, const char *target, t_client *src)
 {
-	//nick@hostname PRIVMSG target :msg
 	size_t		final_size;
 	char		*res;
 
@@ -12,7 +11,6 @@ char	*get_priv_msg(const char *msg, const char *target, t_client *src)
 	final_size += ft_strlen(msg) + 4;
 	if ((res = malloc(final_size)) == NULL)
 		return (NULL);
-
 	ft_strcpy(res, ":");
 	ft_strcat(res, src->nickname);
 	ft_strcat(res, "@");

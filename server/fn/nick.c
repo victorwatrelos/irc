@@ -18,9 +18,9 @@ int			nick_fn(const char *param_str, t_client *client)
 	ft_strcpy(upper_nickname, nickname);
 	to_upper_rfc(upper_nickname);
 	if (!is_nick_free(client->st_data->client_list, upper_nickname))
-			return (NICK_ALREADY_TAKEN);
+		return (NICK_ALREADY_TAKEN);
 	if (!is_nick_valid(upper_nickname))
-			return (NICK_BAD_CHAR);
+		return (NICK_BAD_CHAR);
 	ft_strcpy(client->upper_nickname, upper_nickname);
 	ft_strcpy(client->nickname, nickname);
 	client->nick_set = TRUE;

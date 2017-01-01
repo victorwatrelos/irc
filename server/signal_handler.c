@@ -1,6 +1,6 @@
 #include "signal_handler.h"
 
-void		signalHandler(int signal)
+void		signal_handler(int signal)
 {
 	if (signal == SIGPIPE)
 	{

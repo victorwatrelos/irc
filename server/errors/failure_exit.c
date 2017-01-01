@@ -1,6 +1,6 @@
 #include "errors/failure_exit.h"
 
-void	failure_exit(char const *msg)
+void			failure_exit(char const *msg)
 {
 	write(2, msg, strlen(msg));
 	exit(1);
@@ -17,7 +17,7 @@ static t_bool	in_lst(t_list *client_elem, t_list *client_lst)
 	return (FALSE);
 }
 
-void	failure_exit_client(t_list *client_elem, t_list **lst_client)
+void			failure_exit_client(t_list *client_elem, t_list **lst_client)
 {
 	t_client	*client;
 	void		*data;

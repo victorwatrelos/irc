@@ -10,4 +10,5 @@ const t_cmd_map	g_str_to_enum_cmd[] =
 	{"NAMES", names_fn}
 };
 
-const size_t	g_str_to_enum_cmd_size = sizeof(g_str_to_enum_cmd) / sizeof(t_cmd_map);
+const size_t	g_str_to_enum_cmd_size =
+sizeof(g_str_to_enum_cmd) / sizeof(t_cmd_map);

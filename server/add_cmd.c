@@ -19,7 +19,8 @@ static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 	i = 0;
 	while (i < g_str_to_enum_cmd_size)
 	{
-		printf("Match of : |%s| with: |%s|\n", final_cmd_str, g_str_to_enum_cmd[i].cmd_str);
+		printf("Match of : |%s| with: |%s|\n", final_cmd_str,
+				g_str_to_enum_cmd[i].cmd_str);
 		if (ft_strcmp(g_str_to_enum_cmd[i].cmd_str, final_cmd_str) == 0)
 			return (g_str_to_enum_cmd[i].cmd_fn);
 		i++;
@@ -27,7 +28,7 @@ static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 	return (NULL);
 }
 
-void	add_cmd(t_client *client)
+void				add_cmd(t_client *client)
 {
 	t_cmd_fn	cmd;
 	const char	*cmd_str;

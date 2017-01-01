@@ -1,6 +1,7 @@
 #include "fn/names.h"
 
-static void	send_chan_nick(const char *upper_name, t_client *client, t_list *chan_lst)
+static void	send_chan_nick(const char *upper_name, t_client *client,
+		t_list *chan_lst)
 {
 	t_channel	*chan;
 
@@ -40,7 +41,6 @@ static t_bool	callback(const char *param, void *p_client, t_bool last)
 	names(param, (t_client *)p_client);
 	return (TRUE);
 }
-
 
 int			names_fn(const char *params_str, t_client *client)
 {
