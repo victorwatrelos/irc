@@ -36,7 +36,6 @@ static int	join_channel(const char *join_channel, t_list **channel_list, t_clien
 	t_channel	*channel;
 	char		upper_channel_name[MAX_SIZE_CHANNEL_NAME + 1];
 
-	printf("Join channel: %s\n", join_channel);
 	ft_strcpy(upper_channel_name, join_channel);
 	to_upper_rfc(upper_channel_name);
 	channel_elem = *channel_list;

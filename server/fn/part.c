@@ -23,21 +23,23 @@ static void	leave(const char *upper_name, t_client *client, t_list *chan_lst)
 	while (chan_lst)
 	{
 		chan = chan_lst->content;
-		if (ft_strcmp(chan->upper_name, upper_name) == 0)
+		if (ft_strcmp(chan->upper_name, upper_name) != 0)
 		{
 			chan_lst = chan_lst->next;
 			continue ;
 		}
 		leave_chan(chan, client);
+		return ;
 	}
 }
 
 static void	part(const char *chan_name, t_client *client)
 {
-	char		upper_name[MAX_SIZE_CHANNEL_NAME + 1]
+	char		upper_name[MAX_SIZE_CHANNEL_NAME + 1];
+
 	if (ft_strlen(chan_name) > MAX_SIZE_CHANNEL_NAME)
 	{
-		send_nosuchchannel(channel_name, client);
+		send_nosuchchannel(chan_name, client);
 		return ;
 	}
 	ft_strcpy(upper_name, chan_name);
@@ -47,7 +49,9 @@ static void	part(const char *chan_name, t_client *client)
 
 static t_bool	callback(const char *param, void *p_client, t_bool last)
 {
+	(void)last;
 	part(param, (t_client *)p_client);
+	return (TRUE);
 }
 
 int				part_fn(const char *param_str, t_client *client)

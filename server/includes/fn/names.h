@@ -1,5 +1,5 @@
-#ifndef PART_H
-# define PART_H
+#ifndef NAMES_H
+# define NAMES_H
 
 # include "global.h"
 # include "struct.h"
@@ -10,7 +10,7 @@
 # include "fn.h"
 # include <libft.h>
 # include "msg_error/send_nosuchchannel.h"
-
+# include "msg/send_rpl_endofname.h"
+# include "msg/send_rpl_namereply.h"
 
 #endif
-

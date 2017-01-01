@@ -18,5 +18,7 @@ int		nick_fn(const char *param_str, t_client *client);
 int		user_fn(const char *param_str, t_client *client);
 int		join_fn(const char *param_str, t_client *client);
 int		privmsg_fn(const char *param_str, t_client *client);
+int		part_fn(const char *param_str, t_client *client);
+int			names_fn(const char *params_str, t_client *client);
 
 #endif

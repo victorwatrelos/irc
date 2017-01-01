@@ -30,12 +30,14 @@ SRC=main.c \
 	msg_error/send_err_cmd.c \
 	msg_error/send_nosuchchannel.c \
 	msg_error/send_cannotsendchan.c \
-	msg_error/send_join_error.c \
+	msg/send_rpl_namereply.c \
+	msg/send_rpl_endofname.c \
 	fn/nick.c \
 	fn/user.c \
 	fn/join.c \
-	fn/privmsg.c
-
+	fn/privmsg.c \
+	fn/part.c \
+	fn/names.c
 
 HEADER=$(SRC:.c=.h)
 
