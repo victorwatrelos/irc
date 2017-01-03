@@ -6,12 +6,10 @@ static int		init_fd_set(int sockfd, t_select *st_select, t_data *data)
 	FD_ZERO(&(st_select->write));
 	if (sockfd >= 0)
 		FD_SET(sockfd, &(st_select->read));
-	ft_printf("before\n");
 	FD_SET(0, &(st_select->read));
 	if (sockfd >= 0 && (get_size_circular_buffer(data->buff_out) > 0
 			|| data->send_buff.start != data->send_buff.end))
 		FD_SET(sockfd, &(st_select->write));
-	ft_printf("after\n");
 	if (sockfd < 0)
 		return (0);
 	return (sockfd);
@@ -43,7 +41,6 @@ int		loop(t_data *data)
 {
 	int		ret;
 
-	ft_printf("In loop\n");
 	while (1)
 	{
 		ret = select_listen(data->sockfd, data);
@@ -52,7 +49,6 @@ int		loop(t_data *data)
 		if (ret == SERVER_DISCONNECT)
 			return (SERVER_DISCONNECT);
 	}
-	ft_printf("Out of loop\n");
 }
 
 int		launch_connection(const char *ip, int32_t port)
@@ -74,7 +70,7 @@ int		launch_connection(const char *ip, int32_t port)
 	{
 		data.sockfd = -1;
 		server_disconnect(&data);
-		loop(&data);
+		ft_printf("end loop with: %d\n", loop(&data));
 	}
 	return (-666);
 }

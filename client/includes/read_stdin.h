@@ -5,6 +5,7 @@
 # include <bool.h>
 # include <read_socket.h>
 # include "struct_client.h"
+# include "parser/user_cmd.h"
 
 t_bool		read_stdin(t_data *data);
 

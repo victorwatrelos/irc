@@ -15,9 +15,13 @@ SRC=main.c \
 	add_cmd.c \
 	read_stdin.c \
 	write_client.c \
+	client_const_global.c \
+	fn_stdin/nick_fn.c \
+	parser/user_cmd.c \
 	network/check_select.c \
 	network/launch_connection.c \
 	network/connect_to_server.c \
+	errors/bad_cmd_stdin.c \
 	errors/server_disconnect.c
 
 HEADER=$(SRC:.c=.h)
