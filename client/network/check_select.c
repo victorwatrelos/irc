@@ -9,14 +9,15 @@ int		check_select(t_select *st_select, int sockfd, t_data *data)
 	}
 	if (FD_ISSET(0, &(st_select->read)))
 	{
-	//	if (!read_stdin(data))
-	//		return (STDIN_DISCONNECT);
+		if (!read_stdin(data))
+			return (STDIN_DISCONNECT);
 	}
 	if (FD_ISSET(sockfd, &(st_select->write))
-			&& get_size_circular_buffer(data->buff_out) > 0)
+			&& (get_size_circular_buffer(data->buff_out) > 0
+				|| data->send_buff.start != data->send_buff.end))
 	{
-	//	if (!write_fd(sockfd, data))
-	//		return (SERVER_DISCONNECT);
+		if (!write_client(sockfd, data))
+			return (SERVER_DISCONNECT);
 	}
 	return (SUCCESS);
 }

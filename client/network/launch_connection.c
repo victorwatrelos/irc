@@ -8,7 +8,8 @@ static int		init_fd_set(int sockfd, t_select *st_select, t_data *data)
 		FD_SET(sockfd, &(st_select->read));
 	ft_printf("before\n");
 	FD_SET(0, &(st_select->read));
-	if (sockfd >= 0 && get_size_circular_buffer(data->buff_out) > 0)
+	if (sockfd >= 0 && (get_size_circular_buffer(data->buff_out) > 0
+			|| data->send_buff.start != data->send_buff.end))
 		FD_SET(sockfd, &(st_select->write));
 	ft_printf("after\n");
 	if (sockfd < 0)

@@ -15,7 +15,6 @@ SRC=main.c \
 	read_client.c \
 	add_cmd.c \
 	channel.c \
-	send_to_client.c \
 	send_msg_to_client.c \
 	privmsg_construct.c \
 	send_to_chan.c \

@@ -13,6 +13,8 @@ INCLUDES=-I ../libft/includes -I ./includes -I ../includes -I ../circular_buffer
 SRC=main.c \
 	read_client.c \
 	add_cmd.c \
+	read_stdin.c \
+	write_client.c \
 	network/check_select.c \
 	network/launch_connection.c \
 	network/connect_to_server.c \

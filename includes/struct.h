@@ -31,13 +31,6 @@ typedef struct	s_data_server
 	t_select	*st_select;
 }				t_data_server;
 
-typedef struct	s_send_buff
-{
-	char		buff[SIZE_SEND_BUFF];
-	size_t		start;
-	size_t		end;
-}				t_send_buff;
-
 typedef struct	s_channel
 {
 	char		name[MAX_SIZE_CHANNEL_NAME + 1];

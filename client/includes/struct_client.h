@@ -25,6 +25,8 @@ typedef struct		s_data
 	int32_t			port;
 	int				sockfd;
 	t_cat_cmd		st_cat_cmd;
+	t_cat_cmd		stdin_cat_cmd;
+	t_send_buff		send_buff;
 }					t_data;
 
 #endif

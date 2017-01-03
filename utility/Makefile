@@ -21,6 +21,7 @@ SRC=client_utils.c \
 	params.c \
 	get_numeric_response.c \
 	read_socket.c \
+	send_to_sockfd.c \
 	str_utils.c
 
 OBJ=$(SRC:.c=.o)

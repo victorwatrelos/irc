@@ -2,7 +2,7 @@
 
 static void	write_client(t_list **client_lst, t_list *client_elem, t_client *client)
 {
-	if (send_to_client(client) < 0)
+	if (send_to_sockfd(client->sockfd, &(client->send_buff), client->cmd_queue.buff_out) < 0)
 		failure_exit_client(client_elem, client_lst);
 }
 

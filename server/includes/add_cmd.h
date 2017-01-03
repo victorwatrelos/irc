@@ -6,6 +6,6 @@
 # include "str_utils.h"
 # include "msg_error/send_err_cmd.h"
 
-void	add_cmd(t_client *client);
+void	add_cmd(t_cat_cmd *st_cat_cmd, t_client *client);
 
 #endif
