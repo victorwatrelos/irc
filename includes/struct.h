@@ -8,6 +8,7 @@
 # include <netinet/in.h>
 # include <list.h>
 # include <circular_buffer.h>
+# include <struct_global.h>
 
 typedef struct	s_cmd_queue
 {
@@ -51,18 +52,17 @@ typedef struct	s_client
 	t_bool			logged_in;
 	char			nickname[NICK_MAXSIZE + 1];
 	char			upper_nickname[NICK_MAXSIZE + 1];
-	char			curr_cmd[MAX_CMD_SIZE + 1];
 	char			hostname[MAX_SIZE_HOSTNAME + 1];
 	char			username[MAX_SIZE_USERNAME + 1];
 	char			upper_username[MAX_SIZE_USERNAME + 1];
 	char			realname[MAX_SIZE_REALNAME + 1];
 	char			usermode[MAX_SIZE_USERMODE + 1];
 	int				sockfd;
-	int				size_current_msg;
 	t_data_server	*st_data;
 	t_cmd_queue		cmd_queue;
 	t_send_buff		send_buff;
 	t_list			*err_list;
+	t_cat_cmd		cat_cmd;
 
 }				t_client;
 

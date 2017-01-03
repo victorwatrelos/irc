@@ -20,6 +20,7 @@ LIB=-L./$(LIBFT_PATH) -lft_core
 SRC=client_utils.c \
 	params.c \
 	get_numeric_response.c \
+	read_socket.c \
 	str_utils.c
 
 OBJ=$(SRC:.c=.o)

@@ -13,7 +13,7 @@
 #ifndef CONNECT_TO_SERVER_H
 # define CONNECT_TO_SERVER_H
 
-# include "network/struct_client.h"
+# include "struct_client.h"
 # include <libft.h>
 # include <sys/socket.h>
 # include <netinet/in.h>

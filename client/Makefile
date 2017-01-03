@@ -12,9 +12,11 @@ INCLUDES=-I ../libft/includes -I ./includes -I ../includes -I ../circular_buffer
 
 SRC=main.c \
 	read_client.c \
+	add_cmd.c \
 	network/check_select.c \
 	network/launch_connection.c \
-	network/connect_to_server.c
+	network/connect_to_server.c \
+	errors/server_disconnect.c
 
 HEADER=$(SRC:.c=.h)
 

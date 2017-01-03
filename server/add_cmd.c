@@ -28,7 +28,7 @@ static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 	return (NULL);
 }
 
-void				add_cmd(t_client *client)
+void				add_cmd(t_cat_cmd *st_cat_cmd, t_client *client)
 {
 	t_cmd_fn	cmd;
 	const char	*cmd_str;

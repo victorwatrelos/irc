@@ -3,6 +3,9 @@
 
 # define SERVER_DISCONNECT (-1)
 # define STDIN_DISCONNECT (-2)
+# define SERVER_CONNECTION_FAIL (-3)
 # define SUCCESS (1)
+
+# define SIZE_CIRCULAR_BUFFER (128)
 
 #endif
