@@ -16,7 +16,7 @@ void		send_rpl_endofname(t_client *client, const char *chan_name)
 	ft_strcat(msg, " ");
 	ft_strcat(msg, MSG_ENDOFNAME);
 	data[HOSTNAME] = client->hostname;
-	data[CODE] = "353";
+	data[CODE] = "366";
 	data[NICKNAME] = client->nickname;
 	data[MSG] = msg;
 	if ((response = get_numeric_response_custom(data, FALSE)) == NULL)
