@@ -36,7 +36,6 @@ static void		push_msg(const char *msg, t_data *data)
 
 int				fn_001(t_num_resp_param *param, t_data *data)
 {
-	printf("param: |%s|\n", param->msg);
 	data->logged.get_num_resp[0] = TRUE;
 	push_msg(param->msg, data);
 	check_if_all(data);

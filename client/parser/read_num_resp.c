@@ -21,8 +21,6 @@ static t_bool	read_resp(t_num_resp_param *params, t_data *data)
 {
 	size_t	i;
 
-	printf("Inside good loop: %s\n", params->num);
-
 	i = 0;
 	while (i < g_str_to_enum_resp_size)
 	{
@@ -41,7 +39,6 @@ t_bool			read_num_resp(const char *cmd, t_data *data)
 	t_num_resp_param	params;
 	int					tmp;
 
-	printf("Cmd: |%s|\n", cmd);
 	tmp = jump_to_space(cmd, 0);
 	params.host = cmd + 1;
 	params.size_host = tmp;

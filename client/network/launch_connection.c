@@ -74,7 +74,6 @@ int		launch_connection(const char *ip, int32_t port)
 		data.sockfd = -1;
 		data.is_connected = FALSE;
 		server_disconnect(&data);
-		ft_printf("end loop with: %d\n", loop(&data));
 	}
 	return (-666);
 }

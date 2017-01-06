@@ -2,7 +2,6 @@
 
 static void	stdin_cmd(t_cat_cmd *stdin_cat_cmd, t_data *data)
 {
-	printf("STDIN MSG: %s\n", stdin_cat_cmd->curr_cmd);
 	parse_cmd(data, stdin_cat_cmd->curr_cmd);
 }
 
