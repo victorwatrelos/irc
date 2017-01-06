@@ -16,16 +16,19 @@ SRC=main.c \
 	read_stdin.c \
 	write_client.c \
 	disp_msg.c \
+	disp_need.c \
 	client_const_global.c \
 	fn_num_resp/fn_loggin.c \
 	fn_num_resp/fn_353.c \
 	fn_num_resp/fn_366.c \
+	fn_num_resp/fn_432.c \
 	fn_num_resp/fn_join_resp.c \
 	fn_stdin/nick_fn.c \
 	fn_stdin/join_fn.c \
 	fn_stdin/leave_fn.c \
 	fn_stdin/msg_fn.c \
 	fn_stdin/who_fn.c \
+	fn_stdin/connect_fn.c \
 	parser/read_num_resp.c \
 	parser/user_cmd.c \
 	parser/read_privmsg.c \

@@ -13,6 +13,8 @@ typedef struct	s_stdin_map
 {
 	const char	cmd_str[MAX_SIZE_CMD_STR];
 	t_stdin_fn	cmd_fn;
+	t_bool		need_nick;
+	t_bool		need_connect;
 }				t_stdin_map;
 
 extern const t_stdin_map g_str_to_enum_stdin[];

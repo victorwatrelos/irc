@@ -2,11 +2,12 @@
 
 const t_stdin_map	g_str_to_enum_stdin[] =
 {
-	{"join", join_fn},
-	{"nick", nick_fn},
-	{"leave", leave_fn},
-	{"msg", msg_fn},
-	{"who", who_fn}
+	{"connect", connect_fn, FALSE, FALSE},
+	{"join", join_fn, TRUE, TRUE},
+	{"nick", nick_fn, FALSE, TRUE},
+	{"leave", leave_fn, TRUE, TRUE},
+	{"msg", msg_fn, TRUE, TRUE},
+	{"who", who_fn, TRUE, TRUE}
 };
 
 const size_t	g_str_to_enum_stdin_size =
@@ -19,7 +20,10 @@ const t_num_resp_map	g_str_to_enum_num_resp[] =
 	{"003", fn_003},
 	{"004", fn_004},
 	{"353", fn_353},
-	{"366", fn_366}
+	{"366", fn_366},
+	{"432", fn_432},
+	{"404", fn_404},
+	{"461", fn_461}
 };
 
 const size_t	g_str_to_enum_num_resp_size =

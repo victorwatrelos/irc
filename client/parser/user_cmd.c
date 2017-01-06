@@ -35,6 +35,16 @@ static void	execute_cmd(const char *cmd, const char *params, t_data *data)
 			++i;
 			continue ;
 		}
+		if (g_str_to_enum_stdin[i].need_connect && data->is_connected == FALSE)
+		{
+			disp_need_connect(data);
+			return ;
+		}
+		if (g_str_to_enum_stdin[i].need_nick && data->is_logged == FALSE)
+		{
+			disp_need_nick(data);
+			return ;
+		}
 		g_str_to_enum_stdin[i].cmd_fn(params, data);
 		return ;
 	}
@@ -47,7 +57,6 @@ void		parse_cmd(t_data *data, const char *full_cmd)
 	size_t		size;
 
 	size = ft_strlen(full_cmd);
-	ft_printf("full cmd: %s, size: %d\n", full_cmd, size);
 	if (size <= 0 || full_cmd[0] != '/')
 	{
 		bad_cmd_stdin(full_cmd);
@@ -55,7 +64,6 @@ void		parse_cmd(t_data *data, const char *full_cmd)
 	}
 	if ((cmd = get_cmd(full_cmd, &start_params)) == NULL)
 		return ;
-	ft_printf("cmd: %s, params: %s\n", cmd, start_params);
 	execute_cmd(cmd, start_params, data);
 	free(cmd);
 	free(start_params);
