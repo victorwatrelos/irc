@@ -38,6 +38,5 @@ void		send_rpl_namereply(t_list *client_lst, t_client *dest, const char *chan_na
 	}
 	response = get_num_resp(dest, msg);
 	free(msg);
-	printf("namereply: %s\n", response);
 	push_back_circular_buffer(dest->cmd_queue.buff_out, response);
 }

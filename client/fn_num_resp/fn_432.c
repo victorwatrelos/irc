@@ -5,7 +5,7 @@ int			fn_403(t_num_resp_param *param, t_data *data)
 	char		*res;
 
 	(void)param;
-	if ((res = ft_strdup(MSG_432)) == NULL)
+	if ((res = ft_strdup(MSG_403)) == NULL)
 		return (FALSE);
 	push_back_circular_buffer(data->display_out, res);
 	return (TRUE);

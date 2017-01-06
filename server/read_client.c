@@ -9,7 +9,6 @@ t_bool			read_client(t_list *client_elem, t_list **lst_client)
 	client->cat_cmd.param_callback = client;
 	if (!read_socket(client->sockfd, &(client->cat_cmd)))
 	{
-		ft_printf("%rClient %d disconnect\n", client->sockfd);
 		failure_exit_client(client_elem, lst_client);
 		return (FALSE);
 	}

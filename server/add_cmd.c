@@ -19,8 +19,6 @@ static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 	i = 0;
 	while (i < g_str_to_enum_cmd_size)
 	{
-		printf("Match of : |%s| with: |%s|\n", final_cmd_str,
-				g_str_to_enum_cmd[i].cmd_str);
 		if (ft_strcmp(g_str_to_enum_cmd[i].cmd_str, final_cmd_str) == 0)
 			return (g_str_to_enum_cmd[i].cmd_fn);
 		i++;
@@ -37,7 +35,6 @@ void				add_cmd(t_cat_cmd *st_cat_cmd, t_client *client)
 
 	pos = 0;
 	cmd_str = st_cat_cmd->curr_cmd;
-	printf("Client with message: %s", cmd_str);
 	if ((cmd = get_cmd(cmd_str, &pos)) == NULL)
 	{
 		printf("Command %s not recognize", cmd_str);

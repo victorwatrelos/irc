@@ -1,6 +1,7 @@
 #include "network/init_server.h"
 #include "network/server.h"
 #include "libft.h"
+#include "signal_handler.h"
 
 int		test_valid(const char *av)
 {
@@ -54,6 +55,8 @@ int		main(int argc, const char **argv)
 		ft_printf("%rUnable to open server on port %d\n", port);
 		return (1);
 	}
+	exit_clean(&d_server);
+	signal(SIGINT, signal_handler);
 	launch_select(sockfd, &d_server);
 	return (0);
 }

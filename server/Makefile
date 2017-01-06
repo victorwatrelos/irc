@@ -18,6 +18,7 @@ SRC=main.c \
 	send_msg_to_client.c \
 	privmsg_construct.c \
 	send_to_chan.c \
+	signal_handler.c \
 	send_success_login.c \
 	const_global.c \
 	errors/failure_exit.c \
