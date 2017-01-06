@@ -31,6 +31,7 @@ SRC=main.c \
 	msg_error/send_cannotsendchan.c \
 	msg/send_rpl_namereply.c \
 	msg/send_rpl_endofname.c \
+	msg/send_join_msg.c \
 	fn/nick.c \
 	fn/user.c \
 	fn/join.c \

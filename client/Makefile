@@ -18,7 +18,10 @@ SRC=main.c \
 	disp_msg.c \
 	client_const_global.c \
 	fn_num_resp/fn_loggin.c \
+	fn_num_resp/fn_353.c \
 	fn_stdin/nick_fn.c \
+	fn_stdin/join_fn.c \
+	fn_stdin/leave_fn.c \
 	parser/read_num_resp.c \
 	parser/user_cmd.c \
 	network/check_select.c \

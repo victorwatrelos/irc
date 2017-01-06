@@ -4,6 +4,7 @@
 # include "fn_stdin/fn_stdin.h"
 # include "struct_client.h"
 # include "fn_num_resp/fn_loggin.h"
+# include "fn_num_resp/fn_resp.h"
 # define MAX_SIZE_NUM 4
 
 typedef int (*t_stdin_fn)(const char *, t_data *);

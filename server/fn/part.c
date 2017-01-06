@@ -8,10 +8,9 @@ static void	leave_chan(t_channel *chan, t_client *client)
 	while (client_lst)
 	{
 		if (client_lst->content == client)
-		{
 			ft_lstdelone(&(chan->client_lst), client_lst);
-			return ;
-		}
+		else
+			send_part_msg(chan, (t_client *)client_lst->content, client);
 		client_lst = client_lst->next;
 	}
 }
