@@ -23,8 +23,10 @@ SRC=main.c \
 	fn_stdin/nick_fn.c \
 	fn_stdin/join_fn.c \
 	fn_stdin/leave_fn.c \
+	fn_stdin/msg_fn.c \
 	parser/read_num_resp.c \
 	parser/user_cmd.c \
+	parser/read_privmsg.c \
 	network/check_select.c \
 	network/launch_connection.c \
 	network/connect_to_server.c \

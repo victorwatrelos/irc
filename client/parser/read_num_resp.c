@@ -47,13 +47,17 @@ t_bool			read_num_resp(const char *cmd, t_data *data)
 	params.size_host = tmp;
 	params.num = jump_end_of_space(cmd, tmp) + cmd;
 	params.size_num = jump_to_space(params.num, 0);
-	printf("size: %d\n", params.size_num);
+	if (params.size_num == 3)
+	{
+		params.nick = jump_end_of_space(params.num, params.size_num) + params.num;
+		params.size_nick = jump_to_space(params.nick, 0);
+		params.msg = jump_end_of_space(params.nick, params.size_nick) + params.nick;
+		return (process_msg(&params, data));
+	}
+	params.msg = jump_end_of_space(params.num, params.size_num) + params.num;
 	if (params.size_num == 4)
 		return (read_resp(&params, data));
-	else if (params.size_num != 3)
-		return (FALSE);
-	params.nick = jump_end_of_space(params.num, params.size_num) + params.num;
-	params.size_nick = jump_to_space(params.nick, 0);
-	params.msg = jump_end_of_space(params.nick, params.size_nick) + params.nick;
-	return (process_msg(&params, data));
+	else if (params.size_num == 7 && ft_strncmp(params.num, "PRIVMSG", 7) == 0)
+		return (read_privmsg(&params, data));
+	return (FALSE);
 }

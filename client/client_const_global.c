@@ -4,7 +4,8 @@ const t_stdin_map	g_str_to_enum_stdin[] =
 {
 	{"join", join_fn},
 	{"nick", nick_fn},
-	{"leave", leave_fn}
+	{"leave", leave_fn},
+	{"msg", msg_fn}
 };
 
 const size_t	g_str_to_enum_stdin_size =

@@ -11,9 +11,11 @@
 # define MSG_USER_MIDDLE " 0 * "
 # define MSG_JOIN_BASE "JOIN "
 # define MSG_PART_BASE "PART "
+# define MSG_MSG_BASE "PRIVMSG "
 
 int		nick_fn(const char *cmd, t_data *data);
 int		join_fn(const char *params, t_data *data);
 int		leave_fn(const char *params, t_data *data);
+int		msg_fn(const char *params, t_data *data);
 
 #endif
