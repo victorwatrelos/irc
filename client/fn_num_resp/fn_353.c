@@ -72,7 +72,12 @@ int			fn_353(t_num_resp_param *param, t_data *data)
 	if ((channel_name = get_channel_name(param->msg, &i)) == NULL)
 		return (0);
 	if ((members = get_members(param->msg + i)) == NULL)
+	{
+		free(channel_name);
 		return (0);
+	}
 	push_resp(channel_name, members, data);
+	free(channel_name);
+	free(members);
 	return (1);
 }

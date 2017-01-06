@@ -21,3 +21,12 @@ const t_num_resp_map	g_str_to_enum_num_resp[] =
 
 const size_t	g_str_to_enum_num_resp_size =
 sizeof(g_str_to_enum_num_resp) / sizeof(t_num_resp_map);
+
+const t_resp_map	g_str_to_enum_resp[] =
+{
+	{"JOIN", fn_join_resp},
+	{"PART", fn_part_resp}
+};
+
+const size_t	g_str_to_enum_resp_size =
+sizeof(g_str_to_enum_resp) / sizeof(t_resp_map);

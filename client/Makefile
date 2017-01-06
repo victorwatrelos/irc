@@ -19,6 +19,7 @@ SRC=main.c \
 	client_const_global.c \
 	fn_num_resp/fn_loggin.c \
 	fn_num_resp/fn_353.c \
+	fn_num_resp/fn_join_resp.c \
 	fn_stdin/nick_fn.c \
 	fn_stdin/join_fn.c \
 	fn_stdin/leave_fn.c \

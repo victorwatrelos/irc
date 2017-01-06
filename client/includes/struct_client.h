@@ -26,6 +26,8 @@ typedef struct		s_logged
 
 typedef struct	s_num_resp_param
 {
+	const char	*host;
+	int			size_host;
 	const char	*num;
 	int			size_num;
 	const char	*nick;
