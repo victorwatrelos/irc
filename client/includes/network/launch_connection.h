@@ -8,6 +8,7 @@
 # include "network/check_select.h"
 # include "network/connect_to_server.h"
 # include "errors/server_disconnect.h"
+# include "disp_msg.h"
 
 int		launch_connection(const char *ip, int32_t port);
 

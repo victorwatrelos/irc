@@ -3,6 +3,8 @@
 
 # include "fn_stdin/fn_stdin.h"
 # include "struct_client.h"
+# include "fn_num_resp/fn_loggin.h"
+# define MAX_SIZE_NUM 4
 
 typedef int (*t_stdin_fn)(const char *, t_data *);
 
@@ -14,5 +16,16 @@ typedef struct	s_stdin_map
 
 extern const t_stdin_map g_str_to_enum_stdin[];
 extern const size_t	g_str_to_enum_stdin_size;
+
+typedef int (*t_num_resp_fn)(t_num_resp_param *, t_data *);
+
+typedef struct	s_num_resp_map
+{
+	const char		num_cmd[MAX_SIZE_NUM];
+	t_num_resp_fn	cmd_fn;
+}				t_num_resp_map;
+
+extern const t_num_resp_map g_str_to_enum_num_resp[];
+extern const size_t	g_str_to_enum_num_resp_size;
 
 #endif

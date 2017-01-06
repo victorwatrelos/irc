@@ -3,6 +3,7 @@
 
 # include <stdio.h>
 # include "struct_client.h"
+# include "parser/read_num_resp.h"
 
 void		add_cmd(t_cat_cmd *st_cat_cmd, t_data *data);
 

@@ -15,8 +15,11 @@ SRC=main.c \
 	add_cmd.c \
 	read_stdin.c \
 	write_client.c \
+	disp_msg.c \
 	client_const_global.c \
+	fn_num_resp/fn_loggin.c \
 	fn_stdin/nick_fn.c \
+	parser/read_num_resp.c \
 	parser/user_cmd.c \
 	network/check_select.c \
 	network/launch_connection.c \

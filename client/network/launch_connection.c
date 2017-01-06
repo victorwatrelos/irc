@@ -48,6 +48,7 @@ int		loop(t_data *data)
 			return (STDIN_DISCONNECT);
 		if (ret == SERVER_DISCONNECT)
 			return (SERVER_DISCONNECT);
+		disp_msg(data);
 	}
 }
 
@@ -63,12 +64,15 @@ int		launch_connection(const char *ip, int32_t port)
 	data.host = ip;
 	data.port = port;
 	data.sockfd = connect_to_server(&param);
+	data.is_connected = data.sockfd >= 0;
 	data.buff_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
+	data.display_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
 	if ((ret = loop(&data)) == STDIN_DISCONNECT)
 		return (STDIN_DISCONNECT);
 	else if (ret == SERVER_DISCONNECT)
 	{
 		data.sockfd = -1;
+		data.is_connected = FALSE;
 		server_disconnect(&data);
 		ft_printf("end loop with: %d\n", loop(&data));
 	}
