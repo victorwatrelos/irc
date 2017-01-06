@@ -19,7 +19,7 @@ void	exit_clean(t_data *p_data, int mod)
 	}
 }
 
-void		signal_handler(int signal)
+void	signal_handler(int signal)
 {
 	if (signal == SIGINT)
 	{

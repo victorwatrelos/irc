@@ -49,6 +49,7 @@ int				fn_002(t_num_resp_param *param, t_data *data)
 	check_if_all(data);
 	return (1);
 }
+
 int				fn_003(t_num_resp_param *param, t_data *data)
 {
 	data->logged.get_num_resp[2] = TRUE;
@@ -56,6 +57,7 @@ int				fn_003(t_num_resp_param *param, t_data *data)
 	check_if_all(data);
 	return (1);
 }
+
 int				fn_004(t_num_resp_param *param, t_data *data)
 {
 	data->logged.get_num_resp[3] = TRUE;

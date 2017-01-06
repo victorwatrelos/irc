@@ -28,7 +28,8 @@ static char	*get_channame(const char *msg)
 	return (res);
 }
 
-static void	push_resp(const char *nick, const char *chan, const char *msg, t_data *data)
+static void	push_resp(const char *nick, const char *chan, const char *msg,
+		t_data *data)
 {
 	char	*res;
 

@@ -33,7 +33,6 @@ int			fn_461(t_num_resp_param *param, t_data *data)
 	return (TRUE);
 }
 
-
 int			fn_404(t_num_resp_param *param, t_data *data)
 {
 	char		*res;
