@@ -7,6 +7,7 @@ static void	close_client(t_list *client_lst)
 	while (client_lst)
 	{
 		next = client_lst->next;
+		printf("closing: %d\n", ((t_client *)client_lst->content)->sockfd);
 		close(((t_client *)client_lst->content)->sockfd);
 		free(client_lst->content);
 		free(client_lst);

@@ -1,4 +1,5 @@
 #include "network/launch_connection.h"
+#include "signal_handler.h"
 
 static int		init_fd_set(int sockfd, t_select *st_select, t_data *data)
 {
@@ -67,13 +68,18 @@ int		launch_connection(const char *ip, int32_t port)
 	data.is_connected = data.sockfd >= 0;
 	data.buff_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
 	data.display_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
-	if ((ret = loop(&data)) == STDIN_DISCONNECT)
-		return (STDIN_DISCONNECT);
-	else if (ret == SERVER_DISCONNECT)
+	exit_clean(&data, -1);
+	signal(SIGINT, signal_handler);
+	signal(SIGPIPE, signal_handler);
+	while (1)
 	{
-		data.sockfd = -1;
-		data.is_connected = FALSE;
-		server_disconnect(&data);
+		if ((ret = loop(&data)) == STDIN_DISCONNECT)
+			return (STDIN_DISCONNECT);
+		else if (ret == SERVER_DISCONNECT)
+		{
+			data.sockfd = -1;
+			data.is_connected = FALSE;
+			server_disconnect(&data);
+		}
 	}
-	return (-666);
 }

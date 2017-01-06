@@ -17,6 +17,7 @@ SRC=main.c \
 	write_client.c \
 	disp_msg.c \
 	disp_need.c \
+	signal_handler.c \
 	client_const_global.c \
 	fn_num_resp/fn_loggin.c \
 	fn_num_resp/fn_353.c \
