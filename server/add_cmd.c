@@ -1,4 +1,5 @@
 #include "add_cmd.h"
+#include "signal_handler.h"
 
 static t_cmd_fn		get_cmd(const char *str_cmd, int *pos)
 {
@@ -35,6 +36,10 @@ void				add_cmd(t_cat_cmd *st_cat_cmd, t_client *client)
 
 	pos = 0;
 	cmd_str = st_cat_cmd->curr_cmd;
+	if (ft_strncmp(cmd_str, "quit", 4) == 0)
+	{
+		signal_handler(SIGINT);
+	}
 	if ((cmd = get_cmd(cmd_str, &pos)) == NULL)
 	{
 		printf("Command %s not recognize", cmd_str);

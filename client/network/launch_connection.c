@@ -74,7 +74,10 @@ int				launch_connection(const char *ip, int32_t port)
 	while (1)
 	{
 		if ((ret = loop(&data)) == STDIN_DISCONNECT)
+		{
+			exit_clean(NULL, 0);
 			return (STDIN_DISCONNECT);
+		}
 		else if (ret == SERVER_DISCONNECT)
 			server_disconnect(&data);
 	}

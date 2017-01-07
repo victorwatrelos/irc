@@ -45,5 +45,9 @@ int			user_fn(const char *param_str, t_client *client)
 		param_str = next;
 		i++;
 	}
-	return (process_user(&param_fn, client));
+	i = process_user(&param_fn, client);
+	free(param_fn.realname);
+	free(param_fn.mode);
+	free(param_fn.user);
+	return (i);
 }

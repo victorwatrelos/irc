@@ -22,6 +22,8 @@ void	send_to_chan(t_channel *channel, const char *msg, t_client *src)
 		client = client_lst->content;
 		if (client != src)
 			push_back_circular_buffer(client->cmd_queue.buff_out, to_push);
+		else
+			free(to_push);
 		client_lst = client_lst->next;
 	}
 	free(res);

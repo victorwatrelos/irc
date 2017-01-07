@@ -3,15 +3,17 @@
 static void		leave_chan(t_channel *chan, t_client *client)
 {
 	t_list	*client_lst;
+	t_list	*next;
 
 	client_lst = chan->client_lst;
 	while (client_lst)
 	{
+		next = client_lst->next;
 		if (client_lst->content == client)
 			ft_lstdelone(&(chan->client_lst), client_lst);
 		else
 			send_part_msg(chan, (t_client *)client_lst->content, client);
-		client_lst = client_lst->next;
+		client_lst = next;
 	}
 }
 

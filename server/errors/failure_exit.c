@@ -31,6 +31,7 @@ void			failure_exit_client(t_list *client_elem, t_list **lst_client)
 	while ((data = pop_front_circular_buffer(client->cmd_queue.buff_out)))
 		free(data);
 	close(client->sockfd);
+	free(client->cmd_queue.buff_out);
 	free(client);
 	ft_lstdelone(lst_client, client_elem);
 }

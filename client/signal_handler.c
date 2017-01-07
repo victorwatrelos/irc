@@ -12,6 +12,8 @@ void	exit_clean(t_data *p_data, int mod)
 	if (data == NULL)
 		return ;
 	close(data->sockfd);
+	delete_circular_buffer(data->buff_out);
+	delete_circular_buffer(data->display_out);
 	if (mod == 1)
 	{
 		data->sockfd = -1;
