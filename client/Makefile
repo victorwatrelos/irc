@@ -55,7 +55,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
-	echo "\t\xF0\x9F\x8F\x81   Compiling \033[34m$@ \033[0mDONE!"
+	echo "\t\xF0\x9F\x94\xA7  Compiling \033[34m$@ \033[0mDONE!"
 
 clean:
 	rm -rf $(OBJ)

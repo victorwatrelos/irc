@@ -12,6 +12,7 @@
 # define MSG_403 "Channel name invalid"
 # define MSG_461 "Not enough parameter"
 # define MSG_404 "Cannot send to channel"
+# define MSG_433 "Nickname is already in use"
 
 int		fn_353(t_num_resp_param *param, t_data *data);
 int		fn_366(t_num_resp_param *param, t_data *data);
@@ -19,6 +20,8 @@ int		fn_432(t_num_resp_param *param, t_data *data);
 int		fn_403(t_num_resp_param *param, t_data *data);
 int		fn_404(t_num_resp_param *param, t_data *data);
 int		fn_461(t_num_resp_param *param, t_data *data);
+int		fn_433(t_num_resp_param *param, t_data *data);
+int		fn_462(t_num_resp_param *param, t_data *data);
 int		fn_join_resp(t_num_resp_param *param, t_data *data);
 int		fn_part_resp(t_num_resp_param *param, t_data *data);
 

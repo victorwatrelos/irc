@@ -26,7 +26,7 @@ all: $(NAME)
 $(NAME): libft
 
 libft: $(LIB)
-	$(foreach var, $(LIB), mv $(var) $(notdir $(var)) ;)
+	$(foreach var, $(LIB), cp $(var) $(notdir $(var)) ;)
 
 ft_printf/libft_printf.a:
 	(cd ft_printf && $(MAKE))
@@ -43,6 +43,9 @@ clean:
 	(cd list && $(MAKE) clean)
 
 fclean: clean
+	(cd libft_core && $(MAKE) fclean)
+	(cd ft_printf && $(MAKE) fclean)
+	(cd list && $(MAKE) fclean)
 	rm -f $(notdir $(LIB))
 
 re: fclean all

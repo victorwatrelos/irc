@@ -1,14 +1,20 @@
 CC=clang
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re server client lib
 .SILENT:
 
-all:
+client: lib
+	make -C client
+
+server: lib
+	make -C server
+
+lib:
 	make -C libft
 	make -C utility
 	make -C circular_buffer
-	make -C server
-	make -C client
+
+all: lib client server
 
 clean:
 	make clean -C libft

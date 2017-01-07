@@ -33,3 +33,10 @@ void		push_msg(const char *msg, t_data *data)
 	res_msg[size_msg - 3] = '\0';
 	push_back_circular_buffer(data->display_out, res_msg);
 }
+
+int				fn_462(t_num_resp_param *param, t_data *data)
+{
+	(void)param;
+	(void)data;
+	return (1);
+}

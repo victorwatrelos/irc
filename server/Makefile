@@ -2,10 +2,10 @@ CC=clang
 LIBFT_PATH=../libft
 CB_PATH=../circular_buffer
 UTILS_PATH=../utility
-FLAGS=-Wall -Wextra -g
+FLAGS=-Wall -Wextra -Werror -O2
 LIB=-L./$(LIBFT_PATH) -lft_printf -lft_core -lft_list -L./$(CB_PATH) -lcircular_buffer \
 	-L./$(UTILS_PATH) -lutils
-NAME=server
+NAME=serveur
 INCLUDES=-I ../libft/includes -I ./includes -I ../includes -I ../circular_buffer/includes \
 		 -I ../utility/includes
 
@@ -56,7 +56,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
-	echo "\t\xF0\x9F\x8F\x81   Compiling \033[34m$@ \033[0mDONE!"
+	echo "\t\xF0\x9F\x94\xA7   Compiling \033[34m$@ \033[0mDONE!"
 
 clean:
 	rm -rf $(OBJ)

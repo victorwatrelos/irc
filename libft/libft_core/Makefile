@@ -69,20 +69,18 @@ SRC=ft_bzero.c \
 	ft_realloccat.c \
 	get_next_line.c
 
-.SILENT:
-
 OBJ=$(SRC:.c=.o)
 
+.SILENT:
 all: $(NAME)
-
 $(NAME): $(OBJ)
-	ar -q $(NAME) $^
+	ar -q $(NAME) $^ 
 	ranlib $(NAME)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
 
-.PHONY: clean mrproper
+.PHONY: clean fclean all re
 
 clean:
 	rm -rf $(OBJ)

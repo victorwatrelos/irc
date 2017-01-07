@@ -24,7 +24,9 @@ const t_num_resp_map	g_str_to_enum_num_resp[] =
 	{"432", fn_432},
 	{"404", fn_404},
 	{"461", fn_461},
-	{"403", fn_403}
+	{"403", fn_403},
+	{"433", fn_433},
+	{"462", fn_462}
 };
 
 const size_t	g_str_to_enum_num_resp_size =

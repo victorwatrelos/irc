@@ -10,7 +10,7 @@ static char	*get_ip(const char *params, int *i)
 	start_ip = *i + params;
 	size_ip = jump_to_space(start_ip, 0);
 	*i += size_ip;
-	if ((res = malloc(size_ip)) == NULL)
+	if ((res = malloc(size_ip + 1)) == NULL)
 		return (NULL);
 	ft_strncpy(res, start_ip, size_ip);
 	res[size_ip] = '\0';
@@ -25,7 +25,7 @@ static char	*get_port(const char *params)
 
 	start_port = jump_end_of_space(params, 0) + params;
 	size_port = jump_to_space(start_port, 0);
-	if ((res = malloc(size_port)) == NULL)
+	if ((res = malloc(size_port + 1)) == NULL)
 		return (NULL);
 	ft_strncpy(res, start_port, size_port);
 	res[size_port] = '\0';

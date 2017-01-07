@@ -1,5 +1,6 @@
 *.o
 server/server
+server/serveur
 *.a
 *.dSYM
 *.tmp

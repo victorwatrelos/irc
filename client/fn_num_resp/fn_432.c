@@ -43,3 +43,14 @@ int			fn_404(t_num_resp_param *param, t_data *data)
 	push_back_circular_buffer(data->display_out, res);
 	return (TRUE);
 }
+
+int				fn_433(t_num_resp_param *param, t_data *data)
+{
+	char		*res;
+
+	(void)param;
+	if ((res = ft_strdup(MSG_433)) == NULL)
+		return (FALSE);
+	push_back_circular_buffer(data->display_out, res);
+	return (TRUE);
+}
