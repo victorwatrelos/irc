@@ -62,13 +62,12 @@ static void	send_privmsg(t_p_privmsg *p, t_client *client)
 	}
 	ft_strncpy(msg, p->start_msg, p->size_msg);
 	msg[p->size_msg] = '\0';
-	if (try_chan(upper_target, client, msg)
-			|| try_nick(upper_target, client, msg))
-		return ;
-	send_cannotsendchan(target, client);
+	if (!(try_chan(upper_target, client, msg)
+			|| try_nick(upper_target, client, msg)))
+		send_cannotsendchan(target, client);
 }
 
-int		privmsg_fn(const char *param_str, t_client *client)
+int			privmsg_fn(const char *param_str, t_client *client)
 {
 	const char	*end_target;
 	t_p_privmsg	p;

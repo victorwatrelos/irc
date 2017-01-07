@@ -8,7 +8,6 @@ void		send_rpl_endofname(t_client *client, const char *chan_name)
 	char		*response;
 
 	size_msg = sizeof(MSG_ENDOFNAME) + ft_strlen(chan_name) + 8;
-
 	if ((msg = malloc(size_msg)) == NULL)
 		return ;
 	ft_strcpy(msg, " ");
@@ -24,4 +23,3 @@ void		send_rpl_endofname(t_client *client, const char *chan_name)
 	free(msg);
 	push_back_circular_buffer(client->cmd_queue.buff_out, response);
 }
-
