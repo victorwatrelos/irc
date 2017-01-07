@@ -38,7 +38,7 @@ static int		select_listen(int sockfd, t_data *data)
 	return (TRUE);
 }
 
-int		loop(t_data *data)
+int				loop(t_data *data)
 {
 	int		ret;
 
@@ -53,7 +53,7 @@ int		loop(t_data *data)
 	}
 }
 
-int		launch_connection(const char *ip, int32_t port)
+int				launch_connection(const char *ip, int32_t port)
 {
 	t_param		param;
 	int			ret;
@@ -76,10 +76,6 @@ int		launch_connection(const char *ip, int32_t port)
 		if ((ret = loop(&data)) == STDIN_DISCONNECT)
 			return (STDIN_DISCONNECT);
 		else if (ret == SERVER_DISCONNECT)
-		{
-			data.sockfd = -1;
-			data.is_connected = FALSE;
 			server_disconnect(&data);
-		}
 	}
 }

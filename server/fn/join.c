@@ -1,42 +1,7 @@
 #include "fn/join.h"
 
-static int	add_to_chan(t_channel *channel, t_client *client)
-{
-	t_list		*client_lst;
-	t_client	*tmp_client;
-	int			not_here;
-
-	not_here = 0;
-	client_lst = channel->client_lst;
-	while (client_lst)
-	{
-		tmp_client = client_lst->content;
-		if (ft_strcmp(tmp_client->upper_nickname, client->upper_nickname) == 0)
-			not_here = 1;
-		else
-			send_join_msg(channel, tmp_client, client);
-		client_lst = client_lst->next;
-	}
-	if (not_here)
-		return (CMD_SUCCESS);
-	ft_lstadd(&(channel->client_lst), ft_lstnew(client, sizeof(t_client)));
-	send_rpl_namereply(channel->client_lst, client, channel->name);
-	return (CMD_SUCCESS);
-}
-
-static t_channel	*create_channel(const char *channel_name, const char *upper_channel_name)
-{
-	t_channel		*chan;
-
-	if ((chan = malloc(sizeof(t_channel))) == NULL)
-		return (NULL);
-	ft_bzero(chan, sizeof(t_channel));
-	ft_strcpy(chan->name, channel_name);
-	ft_strcpy(chan->upper_name, upper_channel_name);
-	return (chan);
-}
-
-static int	join_channel(const char *join_channel, t_list **channel_list, t_client *client)
+static int		join_channel(const char *join_channel,
+		t_list **channel_list, t_client *client)
 {
 	t_list		*channel_elem;
 	t_channel	*channel;
@@ -61,7 +26,7 @@ static int	join_channel(const char *join_channel, t_list **channel_list, t_clien
 	return (CMD_SUCCESS);
 }
 
-static int	join(const char *channel_name, t_client *client)
+static int		join(const char *channel_name, t_client *client)
 {
 	size_t		size_channel;
 
@@ -90,11 +55,11 @@ static t_bool	callback(const char *param, void *p_client, t_bool last)
 		leave_all(client);
 		return (TRUE);
 	}
-	join(param, client);	
+	join(param, client);
 	return (TRUE);
 }
 
-int		join_fn(const char *param_str, t_client *client)
+int				join_fn(const char *param_str, t_client *client)
 {
 	if (params_lst(param_str, callback, client) == 0)
 		return (ERR_NEEDMOREPARAMS);

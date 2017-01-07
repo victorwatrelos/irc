@@ -8,4 +8,12 @@
 # include "fn/fn.h"
 # include "send_success_login.h"
 
+typedef struct	s_client_param
+{
+	char		*user;
+	char		*mode;
+	char		*realname;
+	char		upper_username[MAX_SIZE_USERNAME + 1];
+}				t_client_param;
+
 #endif

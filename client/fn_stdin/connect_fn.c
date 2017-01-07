@@ -2,7 +2,7 @@
 
 static char	*get_ip(const char *params, int *i)
 {
-	const char 	*start_ip;
+	const char	*start_ip;
 	int			size_ip;
 	char		*res;
 
@@ -19,7 +19,7 @@ static char	*get_ip(const char *params, int *i)
 
 static char	*get_port(const char *params)
 {
-	const char 	*start_port;
+	const char	*start_port;
 	int			size_port;
 	char		*res;
 
@@ -41,7 +41,7 @@ static void	disp_conn_fail(t_data *data)
 	push_back_circular_buffer(data->display_out, res);
 }
 
-int		connect_fn(const char *params, t_data *data)
+int			connect_fn(const char *params, t_data *data)
 {
 	char	*ip;
 	char	*port;

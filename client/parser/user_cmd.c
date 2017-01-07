@@ -1,6 +1,6 @@
 #include "parser/user_cmd.h"
 
-static char *get_cmd(const char *str, char **start_params)
+static char	*get_cmd(const char *str, char **start_params)
 {
 	int		end;
 	char	*cmd;

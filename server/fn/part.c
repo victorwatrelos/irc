@@ -1,6 +1,6 @@
 #include "fn/part.h"
 
-static void	leave_chan(t_channel *chan, t_client *client)
+static void		leave_chan(t_channel *chan, t_client *client)
 {
 	t_list	*client_lst;
 
@@ -15,7 +15,8 @@ static void	leave_chan(t_channel *chan, t_client *client)
 	}
 }
 
-static void	leave(const char *upper_name, t_client *client, t_list *chan_lst)
+static void		leave(const char *upper_name, t_client *client,
+		t_list *chan_lst)
 {
 	t_channel	*chan;
 
@@ -32,7 +33,7 @@ static void	leave(const char *upper_name, t_client *client, t_list *chan_lst)
 	}
 }
 
-static void	part(const char *chan_name, t_client *client)
+static void		part(const char *chan_name, t_client *client)
 {
 	char		upper_name[MAX_SIZE_CHANNEL_NAME + 1];
 

@@ -29,7 +29,7 @@ static char	*get_user_msg(const char *nickname)
 	return (res);
 }
 
-int		nick_fn(const char *params, t_data *data)
+int			nick_fn(const char *params, t_data *data)
 {
 	char	*nick_msg;
 	char	*user_msg;

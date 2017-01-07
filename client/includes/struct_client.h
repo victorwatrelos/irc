@@ -24,21 +24,21 @@ typedef struct		s_logged
 	t_bool			get_num_resp[4];
 }					t_logged;
 
-typedef struct	s_num_resp_param
+typedef struct		s_num_resp_param
 {
-	const char	*host;
-	int			size_host;
-	const char	*num;
-	int			size_num;
-	const char	*nick;
-	int			size_nick;
-	const char	*msg;
-}				t_num_resp_param;
+	const char		*host;
+	int				size_host;
+	const char		*num;
+	int				size_num;
+	const char		*nick;
+	int				size_nick;
+	const char		*msg;
+}					t_num_resp_param;
 
 typedef struct		s_data
 {
-	t_circ_buff		*buff_out;	
-	t_circ_buff		*display_out;	
+	t_circ_buff		*buff_out;
+	t_circ_buff		*display_out;
 	const char		*host;
 	int32_t			port;
 	int				sockfd;

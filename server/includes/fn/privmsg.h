@@ -13,4 +13,12 @@
 # include "send_to_chan.h"
 # include "send_msg_to_client.h"
 
+typedef struct		s_p_privmsg
+{
+	const char		*start_target;
+	const char		*start_msg;
+	size_t			size_msg;
+	size_t			size_target;
+}					t_p_privmsg;
+
 #endif

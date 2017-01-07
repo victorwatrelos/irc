@@ -1,6 +1,6 @@
 #include "fn/names.h"
 
-static void	send_chan_nick(const char *upper_name, t_client *client,
+static void		send_chan_nick(const char *upper_name, t_client *client,
 		t_list *chan_lst)
 {
 	t_channel	*chan;
@@ -21,7 +21,7 @@ static void	send_chan_nick(const char *upper_name, t_client *client,
 	send_rpl_endofname(client, upper_name);
 }
 
-static void	names(const char *chan_name, t_client *client)
+static void		names(const char *chan_name, t_client *client)
 {
 	char		upper_name[MAX_SIZE_CHANNEL_NAME + 1];
 
@@ -42,7 +42,7 @@ static t_bool	callback(const char *param, void *p_client, t_bool last)
 	return (TRUE);
 }
 
-int			names_fn(const char *params_str, t_client *client)
+int				names_fn(const char *params_str, t_client *client)
 {
 	if (params_lst(params_str, callback, client) == 0)
 		return (ERR_NEEDMOREPARAMS);

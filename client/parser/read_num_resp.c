@@ -46,9 +46,11 @@ t_bool			read_num_resp(const char *cmd, t_data *data)
 	params.size_num = jump_to_space(params.num, 0);
 	if (params.size_num == 3)
 	{
-		params.nick = jump_end_of_space(params.num, params.size_num) + params.num;
+		params.nick = jump_end_of_space(params.num, params.size_num)
+			+ params.num;
 		params.size_nick = jump_to_space(params.nick, 0);
-		params.msg = jump_end_of_space(params.nick, params.size_nick) + params.nick;
+		params.msg = jump_end_of_space(params.nick, params.size_nick)
+			+ params.nick;
 		return (process_msg(&params, data));
 	}
 	params.msg = jump_end_of_space(params.num, params.size_num) + params.num;

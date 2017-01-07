@@ -36,6 +36,7 @@ SRC=main.c \
 	fn/nick.c \
 	fn/user.c \
 	fn/join.c \
+	fn/join_utils.c \
 	fn/privmsg.c \
 	fn/part.c \
 	fn/names.c

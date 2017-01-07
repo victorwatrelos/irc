@@ -13,5 +13,8 @@
 # include "msg/send_rpl_namereply.h"
 # include "msg/send_join_msg.h"
 
+int			add_to_chan(t_channel *channel, t_client *client);
+t_channel	*create_channel(const char *channel_name,
+		const char *upper_channel_name);
 
 #endif

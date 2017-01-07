@@ -15,7 +15,7 @@ static char	*get_sender(const char *host, int size)
 	return (res);
 }
 
-char	*get_target(const char *msg, int *i)
+char		*get_target(const char *msg, int *i)
 {
 	int		size;
 	char	*res;
@@ -29,7 +29,7 @@ char	*get_target(const char *msg, int *i)
 	return (res);
 }
 
-char	*get_msg(const char *msg)
+char		*get_msg(const char *msg)
 {
 	const char	*start_msg;
 	char		*res;
@@ -53,7 +53,8 @@ char	*get_msg(const char *msg)
 	return (res);
 }
 
-static void	push_resp(const char *sender, const char *target, const char *msg, t_data *data)
+static void	push_resp(const char *sender, const char *target,
+		const char *msg, t_data *data)
 {
 	char		*res;
 	int			final_size;
@@ -71,7 +72,7 @@ static void	push_resp(const char *sender, const char *target, const char *msg, t
 	push_back_circular_buffer(data->display_out, res);
 }
 
-t_bool	read_privmsg(t_num_resp_param *param, t_data *data)
+t_bool		read_privmsg(t_num_resp_param *param, t_data *data)
 {
 	char	*sender;
 	char	*target;

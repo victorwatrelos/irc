@@ -21,7 +21,7 @@ static void	free_channel(t_list *chan_lst)
 	t_list	*client;
 	t_list	*client_next;
 
-	while(chan_lst)
+	while (chan_lst)
 	{
 		next = chan_lst->next;
 		client = ((t_channel *)chan_lst->content)->client_lst;
@@ -37,7 +37,7 @@ static void	free_channel(t_list *chan_lst)
 	}
 }
 
-void	exit_clean(t_data_server *p_data)
+void		exit_clean(t_data_server *p_data)
 {
 	static t_data_server	*data = NULL;
 

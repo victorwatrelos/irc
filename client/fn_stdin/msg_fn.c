@@ -2,7 +2,7 @@
 
 static void	send_msg(const char *target, const char *msg, t_data *data)
 {
-	char	*res;	
+	char	*res;
 	int		final_size;
 
 	final_size = ft_strlen(target) + ft_strlen(msg) + sizeof(MSG_MSG_BASE) + 4;
@@ -16,7 +16,7 @@ static void	send_msg(const char *target, const char *msg, t_data *data)
 	push_back_circular_buffer(data->buff_out, res);
 }
 
-int		msg_fn(const char *params, t_data *data)
+int			msg_fn(const char *params, t_data *data)
 {
 	int			size_target;
 	int			size_msg;

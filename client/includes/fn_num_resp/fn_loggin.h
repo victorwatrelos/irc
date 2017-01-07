@@ -8,5 +8,7 @@ int		fn_001(t_num_resp_param *param, t_data *data);
 int		fn_002(t_num_resp_param *param, t_data *data);
 int		fn_003(t_num_resp_param *param, t_data *data);
 int		fn_004(t_num_resp_param *param, t_data *data);
+void	check_if_all(t_data *data);
+void	push_msg(const char *msg, t_data *data);
 
 #endif

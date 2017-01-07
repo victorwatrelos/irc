@@ -1,15 +1,32 @@
 #include "fn/user.h"
 
-int		user_fn(const char *param_str, t_client *client)
+static int	process_user(t_client_param *param, t_client *client)
 {
-	int			size;
-	const char	*next;
-	const char	*param;
-	char		*user;
-	char		*mode;
-	char		*realname;
-	char		upper_username[MAX_SIZE_USERNAME + 1];
-	int			i;
+	ft_strncpy(param->upper_username, param->user, MAX_SIZE_USERNAME);
+	to_upper_rfc(param->upper_username);
+	if (!is_username_free(client->st_data->client_list, param->upper_username))
+		return (ERR_ALREADYREGISTRED);
+	ft_strncpy(client->upper_username, param->upper_username,
+			MAX_SIZE_USERNAME);
+	client->upper_username[MAX_SIZE_USERNAME] = '\0';
+	ft_strncpy(client->username, param->user, MAX_SIZE_USERNAME);
+	client->username[MAX_SIZE_USERNAME] = '\0';
+	ft_strncpy(client->usermode, param->mode, MAX_SIZE_USERMODE);
+	client->usermode[MAX_SIZE_USERMODE] = '\0';
+	ft_strncpy(client->realname, param->realname, MAX_SIZE_REALNAME);
+	client->realname[MAX_SIZE_REALNAME] = '\0';
+	client->username_set = TRUE;
+	send_success_login(client);
+	return (CMD_SUCCESS);
+}
+
+int			user_fn(const char *param_str, t_client *client)
+{
+	int				size;
+	const char		*next;
+	const char		*param;
+	t_client_param	param_fn;
+	int				i;
 
 	i = 0;
 	while (i < 4)
@@ -20,24 +37,13 @@ int		user_fn(const char *param_str, t_client *client)
 		if (size > 512)
 			return (UNEXPECTED_ERROR);
 		if (i == 0)
-			user = ft_strndup(param, size);
+			param_fn.user = ft_strndup(param, size);
 		else if (i == 1)
-			mode = ft_strndup(param, size);
+			param_fn.mode = ft_strndup(param, size);
 		else if (i == 3)
-			realname = ft_strndup(param, size);
-
+			param_fn.realname = ft_strndup(param, size);
 		param_str = next;
 		i++;
 	}
-	ft_strncpy(upper_username, user, MAX_SIZE_USERNAME);
-	to_upper_rfc(upper_username);
-	if (!is_username_free(client->st_data->client_list, upper_username))
-		return (ERR_ALREADYREGISTRED);
-	ft_strncpy(client->upper_username, upper_username, MAX_SIZE_USERNAME);
-	ft_strncpy(client->username, user, MAX_SIZE_USERNAME);
-	ft_strncpy(client->usermode, mode, MAX_SIZE_USERMODE);
-	ft_strncpy(client->realname, realname, MAX_SIZE_REALNAME);
-	client->username_set = TRUE;
-	send_success_login(client);
-	return (CMD_SUCCESS);
+	return (process_user(&param_fn, client));
 }
