@@ -59,7 +59,7 @@ typedef struct	s_client
 
 }				t_client;
 
-typedef int (*t_cmd_fn)(const char *, t_client *);
+typedef int	(*t_cmd_fn)(const char *, t_client *);
 
 typedef struct	s_cmd_map
 {

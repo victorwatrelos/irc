@@ -4,7 +4,7 @@ t_circ_buff	*new_circular_buffer(size_t size)
 {
 	void				**data;
 	t_circular_buffer	*buff;
-	
+
 	if ((data = malloc(sizeof(void *) * size)) == NULL)
 		return (NULL);
 	if ((buff = malloc(sizeof(t_circular_buffer))) == NULL)
@@ -15,7 +15,7 @@ t_circ_buff	*new_circular_buffer(size_t size)
 	return (buff);
 }
 
-void	delete_circular_buffer(t_circ_buff *p_buff)
+void		delete_circular_buffer(t_circ_buff *p_buff)
 {
 	t_circular_buffer	*buff;
 
@@ -24,7 +24,7 @@ void	delete_circular_buffer(t_circ_buff *p_buff)
 	free(buff);
 }
 
-int		push_back_circular_buffer(t_circ_buff *p_buff, void *elem)
+int			push_back_circular_buffer(t_circ_buff *p_buff, void *elem)
 {
 	t_circular_buffer	*buff;
 
@@ -37,7 +37,7 @@ int		push_back_circular_buffer(t_circ_buff *p_buff, void *elem)
 	return (C_BUFF_SUCCESS);
 }
 
-void	*pop_front_circular_buffer(t_circ_buff *p_buff)
+void		*pop_front_circular_buffer(t_circ_buff *p_buff)
 {
 	t_circular_buffer	*buff;
 	void				*ret;
@@ -51,7 +51,7 @@ void	*pop_front_circular_buffer(t_circ_buff *p_buff)
 	return (ret);
 }
 
-size_t	get_size_circular_buffer(t_circ_buff *p_buff)
+size_t		get_size_circular_buffer(t_circ_buff *p_buff)
 {
 	return (((t_circular_buffer *)p_buff)->size);
 }

@@ -12,5 +12,4 @@ char	*get_numeric_response(const char *hostname, const char *code,
 		const char *nickname, const char *msg);
 char	*get_numeric_response_custom(const char *data[], t_bool add_point);
 
-
 #endif

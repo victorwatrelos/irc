@@ -1,8 +1,10 @@
 #include "network/server.h"
 
-static void	write_client(t_list **client_lst, t_list *client_elem, t_client *client)
+static void	write_client(t_list **client_lst, t_list *client_elem,
+		t_client *client)
 {
-	if (send_to_sockfd(client->sockfd, &(client->send_buff), client->cmd_queue.buff_out) < 0)
+	if (send_to_sockfd(client->sockfd, &(client->send_buff),
+				client->cmd_queue.buff_out) < 0)
 		failure_exit_client(client_elem, client_lst);
 }
 
@@ -36,8 +38,8 @@ void		check_select(t_select *st_select, t_data_server *st_data)
 	if (FD_ISSET(st_select->sockfd, &(st_select->read)))
 	{
 		ft_lstadd(&(st_data->client_list),
-				ft_lstnew(get_client(st_select->sockfd, st_data), sizeof(t_client))
-		);
+				ft_lstnew(get_client(st_select->sockfd, st_data),
+				sizeof(t_client)));
 		ft_printf("New client\n");
 	}
 	check_client(st_select, &(st_data->client_list));

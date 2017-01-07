@@ -19,7 +19,6 @@
 # include "bool.h"
 # include "ft_printf.h"
 
-
 int				init_serv(int *sockfd, int port);
 
 #endif

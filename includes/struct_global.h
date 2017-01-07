@@ -7,7 +7,7 @@
  * First param: t_callback_cat_cmd
  * Second param: param_callback (payload)
  */
-typedef int (*t_callback_cat_cmd)(void *, void *);
+typedef int	(*t_callback_cat_cmd)(void *, void *);
 
 typedef struct			s_cat_cmd
 {
@@ -17,11 +17,11 @@ typedef struct			s_cat_cmd
 	void				*param_callback;
 }						t_cat_cmd;
 
-typedef struct	s_send_buff
+typedef struct			s_send_buff
 {
-	char		buff[SIZE_SEND_BUFF];
-	size_t		start;
-	size_t		end;
-}				t_send_buff;
+	char				buff[SIZE_SEND_BUFF];
+	size_t				start;
+	size_t				end;
+}						t_send_buff;
 
 #endif

@@ -5,7 +5,8 @@ char	*get_numeric_response_custom(const char *data[], t_bool add_point)
 	size_t		final_size;
 	char		*res;
 
-	final_size = ft_strlen(data[HOSTNAME]) + ft_strlen(data[CODE]) + ft_strlen(data[NICKNAME]) + ft_strlen(data[MSG]) + 16;
+	final_size = ft_strlen(data[HOSTNAME]) + ft_strlen(data[CODE])
+		+ ft_strlen(data[NICKNAME]) + ft_strlen(data[MSG]) + 16;
 	res = malloc(final_size * sizeof(char));
 	ft_bzero(res, final_size);
 	res[0] = ':';

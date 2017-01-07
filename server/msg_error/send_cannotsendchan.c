@@ -8,7 +8,6 @@ void	send_cannotsendchan(const char *chan_name, t_client *client)
 	char		*response;
 
 	size_msg = sizeof(CANNOT_SEND) + ft_strlen(chan_name) + 8;
-
 	if ((msg = malloc(size_msg)) == NULL)
 		return ;
 	ft_strcpy(msg, " ");
@@ -24,4 +23,3 @@ void	send_cannotsendchan(const char *chan_name, t_client *client)
 	free(msg);
 	push_back_circular_buffer(client->cmd_queue.buff_out, response);
 }
-

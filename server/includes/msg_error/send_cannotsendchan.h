@@ -7,5 +7,4 @@
 
 void	send_cannotsendchan(const char *chan_name, t_client *client);
 
-
 #endif

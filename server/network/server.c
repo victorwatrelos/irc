@@ -38,7 +38,8 @@ static int	init_fd_set(int sockfd, t_list *clients, t_select *st_select)
 	return (fd_max);
 }
 
-static int	select_wrapper(int sockfd, t_select *st_select, t_data_server *st_data)
+static int	select_wrapper(int sockfd, t_select *st_select,
+		t_data_server *st_data)
 {
 	struct timeval	tv;
 	int				fd_max;

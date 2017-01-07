@@ -18,7 +18,8 @@ static void	write_on_circular_buffer(t_send_buff *buff, const char *str)
 	write_on_circular_buffer(buff, str + disp_size);
 }
 
-int			send_to_sockfd(int sockfd, t_send_buff *buff, t_circ_buff *circ_buff_out)
+int			send_to_sockfd(int sockfd, t_send_buff *buff,
+		t_circ_buff *circ_buff_out)
 {
 	char		*cmd;
 	int			ret;

@@ -11,6 +11,6 @@ typedef struct	s_err_map
 	const char	*code;
 }				t_err_map;
 
-void		send_err_cmd(int err, t_client *client);
+void			send_err_cmd(int err, t_client *client);
 
 #endif

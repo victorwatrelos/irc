@@ -1,13 +1,13 @@
 #include "str_utils.h"
 
-int		jump_end_of_space(const char *str, int pos)
+int			jump_end_of_space(const char *str, int pos)
 {
 	while (str[pos] != '\0' && ft_strchr(LIST_SPACE_CHAR, str[pos]) != NULL)
 		pos++;
 	return (pos);
 }
 
-int		jump_to_space(const char *str, int pos)
+int			jump_to_space(const char *str, int pos)
 {
 	while (str[pos] != '\0' && ft_strchr(LIST_SPACE_CHAR, str[pos]) == NULL)
 		pos++;
@@ -33,7 +33,7 @@ const char	*next_param(const char *str, int *size, const char **next)
 	return (start);
 }
 
-char	*ft_strndup(const char *str, size_t size)
+char		*ft_strndup(const char *str, size_t size)
 {
 	char	*res;
 
@@ -43,7 +43,7 @@ char	*ft_strndup(const char *str, size_t size)
 	return (res);
 }
 
-void	to_upper_rfc(char *str)
+void		to_upper_rfc(char *str)
 {
 	while (*str != '\0')
 	{
