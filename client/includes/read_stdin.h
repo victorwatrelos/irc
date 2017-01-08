@@ -7,6 +7,6 @@
 # include "struct_client.h"
 # include "parser/user_cmd.h"
 
-t_bool		read_stdin(t_data *data);
+t_bool		read_stdin(t_data *data, const char *line);
 
 #endif

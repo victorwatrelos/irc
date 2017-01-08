@@ -73,10 +73,12 @@ int				launch_connection(const char *ip, int32_t port)
 	t_data		data;
 
 	ft_bzero(&data, sizeof(t_data));
+	set_data(&data);
 	init_data(&data, ip, port);
 	exit_clean(&data, -1);
 	signal(SIGINT, signal_handler);
 	signal(SIGPIPE, signal_handler);
+	rl_callback_handler_install("", (VCPFunction *)&callback_readline);
 	while (1)
 	{
 		if ((ret = loop(&data)) == STDIN_DISCONNECT)

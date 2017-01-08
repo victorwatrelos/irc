@@ -5,7 +5,6 @@ static void		send_chan_nick(const char *upper_name, t_client *client,
 {
 	t_channel	*chan;
 
-	printf("CHAN NAME: %s\n", upper_name);
 	while (chan_lst)
 	{
 		chan = chan_lst->content;

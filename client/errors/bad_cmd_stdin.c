@@ -2,5 +2,5 @@
 
 void	bad_cmd_stdin(const char *msg)
 {
-	ft_printf("Bad cmd %s\n", msg);
+	ft_printf("Unrecognize cmd: %s\n", msg);
 }
