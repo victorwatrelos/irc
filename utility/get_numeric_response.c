@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_numeric_response.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 19:09:58 by vwatrelo          #+#    #+#             */
+/*   Updated: 2017/01/08 19:10:02 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_numeric_response.h"
 
 char	*get_numeric_response_custom(const char *data[], t_bool add_point)

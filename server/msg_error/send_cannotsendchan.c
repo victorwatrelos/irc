@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   send_cannotsendchan.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 19:11:08 by vwatrelo          #+#    #+#             */
+/*   Updated: 2017/01/08 19:11:11 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "msg_error/send_cannotsendchan.h"
 
 void	send_cannotsendchan(const char *chan_name, t_client *client)

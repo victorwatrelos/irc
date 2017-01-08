@@ -1,12 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct_global.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 19:09:09 by vwatrelo          #+#    #+#             */
+/*   Updated: 2017/01/08 19:09:11 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_GLOBAL_H
 # define STRUCT_GLOBAL_H
 
 # include <global.h>
 
-/**
- * First param: t_callback_cat_cmd
- * Second param: param_callback (payload)
- */
 typedef int	(*t_callback_cat_cmd)(void *, void *);
 
 typedef struct			s_cat_cmd
