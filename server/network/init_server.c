@@ -14,15 +14,15 @@
 
 int				init_serv(int *sockfd, int port)
 {
-	struct sockaddr_in	this;
+	struct sockaddr_in6	this;
 
-	*sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	*sockfd = socket(AF_INET6, SOCK_STREAM, 0);
 	if (*sockfd < 0)
 		return (FALSE);
 	ft_bzero(&this, sizeof(this));
-	this.sin_family = AF_INET;
-	this.sin_port = htons(port);
-	this.sin_addr.s_addr = htonl(INADDR_ANY);
+	this.sin6_family = AF_INET6;
+	this.sin6_port = htons(port);
+	this.sin6_addr = in6addr_any;
 	if (bind(*sockfd, (struct sockaddr *)&this, sizeof(this)) < 0)
 		return (FALSE);
 	if (listen(*sockfd, 255) < 0)

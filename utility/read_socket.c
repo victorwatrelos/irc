@@ -64,7 +64,6 @@ t_bool			read_socket(int sockfd, t_cat_cmd *st_cat_cmd)
 
 	if ((ret = read(sockfd, buff, MAX_CMD_SIZE)) <= 0)
 	{
-		ft_printf("%rClient %d disconnect\n", sockfd);
 		return (FALSE);
 	}
 	buff[ret] = '\0';

@@ -61,7 +61,6 @@ static t_bool	callback(const char *param, void *p_client, t_bool last)
 
 int				join_fn(const char *param_str, t_client *client)
 {
-	printf("Join with: %s\n", param_str);
 	if (params_lst(param_str, callback, client) == 0)
 		return (ERR_NEEDMOREPARAMS);
 	return (CMD_SUCCESS);

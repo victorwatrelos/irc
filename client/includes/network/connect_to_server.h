@@ -18,6 +18,7 @@
 # include <sys/socket.h>
 # include <netinet/in.h>
 # include <arpa/inet.h>
+# include <netdb.h>
 
 int		connect_to_server(t_param *param);
 

@@ -40,7 +40,6 @@ void		check_select(t_select *st_select, t_data_server *st_data)
 		ft_lstadd(&(st_data->client_list),
 				ft_lstnew(get_client(st_select->sockfd, st_data),
 				sizeof(t_client)));
-		ft_printf("New client\n");
 	}
 	check_client(st_select, &(st_data->client_list));
 }

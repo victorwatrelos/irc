@@ -45,7 +45,7 @@ typedef struct	s_client
 	t_bool			logged_in;
 	char			nickname[NICK_MAXSIZE + 1];
 	char			upper_nickname[NICK_MAXSIZE + 1];
-	char			hostname[MAX_SIZE_HOSTNAME + 1];
+	char			hostname[INET6_ADDRSTRLEN + 1];
 	char			username[MAX_SIZE_USERNAME + 1];
 	char			upper_username[MAX_SIZE_USERNAME + 1];
 	char			realname[MAX_SIZE_REALNAME + 1];

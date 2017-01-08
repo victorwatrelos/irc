@@ -25,6 +25,8 @@ static char	*get_port(const char *params)
 
 	start_port = jump_end_of_space(params, 0) + params;
 	size_port = jump_to_space(start_port, 0);
+	if (size_port == 0)
+		return (NULL);
 	if ((res = malloc(size_port + 1)) == NULL)
 		return (NULL);
 	ft_strncpy(res, start_port, size_port);
@@ -51,9 +53,10 @@ int			connect_fn(const char *params, t_data *data)
 	if ((ip = get_ip(params, &i)) == NULL)
 		return (FALSE);
 	if ((port = get_port(params + i)) == NULL)
-		return (FALSE);
+		param.port = 6667;
+	else
+		param.port = ft_atoi(port);
 	param.host = ip;
-	param.port = ft_atoi(port);
 	if (data->is_connected)
 		close(data->sockfd);
 	data->sockfd = connect_to_server(&param);
