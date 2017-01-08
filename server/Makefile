@@ -2,7 +2,7 @@ CC=clang
 LIBFT_PATH=../libft
 CB_PATH=../circular_buffer
 UTILS_PATH=../utility
-FLAGS=-Wall -Wextra -Werror -g
+FLAGS=-Wall -Wextra -Werror
 LIB=-L./$(LIBFT_PATH) -lft_printf -lft_core -lft_list -L./$(CB_PATH) -lcircular_buffer \
 	-L./$(UTILS_PATH) -lutils
 NAME=serveur
