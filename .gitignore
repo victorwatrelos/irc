@@ -1,6 +1,6 @@
 *.o
-server/server
 server/serveur
+client/client
 *.a
 *.dSYM
 *.tmp

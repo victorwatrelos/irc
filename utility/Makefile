@@ -28,6 +28,7 @@ OBJ=$(SRC:.c=.o)
 
 .SILENT:
 all: $(NAME)
+
 $(NAME): $(OBJ)
 	ar -q $(NAME) $^ 
 	ranlib $(NAME)

@@ -1,20 +1,37 @@
 CC=clang
+LIB= libutils \
+	 libft \
+	 libcircular_buffer
 
-.PHONY: clean fclean all re server client lib
+BIN= server_bin \
+	 client_bin
+
+
+.PHONY: clean fclean all re server client lib libft libutils libcircular_buffer
 .SILENT:
 
-client: lib
-	make -C client
 
-server: lib
-	make -C server
+all: $(BIN)
 
-lib:
+
+lib: $(LIB)
+
+libft:
 	make -C libft
+
+libutils:
 	make -C utility
+
+
+libcircular_buffer:
 	make -C circular_buffer
 
-all: lib client server
+
+client_bin: lib
+	make -C client
+
+server_bin: lib
+	make -C server
 
 clean:
 	make clean -C libft
