@@ -53,21 +53,27 @@ int				loop(t_data *data)
 	}
 }
 
-int				launch_connection(const char *ip, int32_t port)
+static void		init_data(t_data *data, const char *ip, int32_t port)
 {
 	t_param		param;
+
+	param.host = ip;
+	param.port = port;
+	data->host = ip;
+	data->port = port;
+	data->sockfd = connect_to_server(&param);
+	data->is_connected = data->sockfd >= 0;
+	data->buff_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
+	data->display_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
+}
+
+int				launch_connection(const char *ip, int32_t port)
+{
 	int			ret;
 	t_data		data;
 
 	ft_bzero(&data, sizeof(t_data));
-	param.host = ip;
-	param.port = port;
-	data.host = ip;
-	data.port = port;
-	data.sockfd = connect_to_server(&param);
-	data.is_connected = data.sockfd >= 0;
-	data.buff_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
-	data.display_out = new_circular_buffer(SIZE_CIRCULAR_BUFFER);
+	init_data(&data, ip, port);
 	exit_clean(&data, -1);
 	signal(SIGINT, signal_handler);
 	signal(SIGPIPE, signal_handler);

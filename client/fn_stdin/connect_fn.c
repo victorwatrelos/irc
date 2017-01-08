@@ -60,6 +60,7 @@ int			connect_fn(const char *params, t_data *data)
 	if (data->is_connected)
 		close(data->sockfd);
 	data->sockfd = connect_to_server(&param);
+	printf("sockfd: %d\n", data->sockfd);
 	data->is_connected = data->sockfd >= 0;
 	if (!data->is_connected)
 	{

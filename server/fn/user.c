@@ -20,6 +20,17 @@ static int	process_user(t_client_param *param, t_client *client)
 	return (CMD_SUCCESS);
 }
 
+static int	process_param(t_client_param *param_fn, t_client *client)
+{
+	int		i;
+
+	i = process_user(param_fn, client);
+	free(param_fn->realname);
+	free(param_fn->mode);
+	free(param_fn->user);
+	return (i);
+}
+
 int			user_fn(const char *param_str, t_client *client)
 {
 	int				size;
@@ -45,9 +56,5 @@ int			user_fn(const char *param_str, t_client *client)
 		param_str = next;
 		i++;
 	}
-	i = process_user(&param_fn, client);
-	free(param_fn.realname);
-	free(param_fn.mode);
-	free(param_fn.user);
-	return (i);
+	return (process_param(&param_fn, client));
 }

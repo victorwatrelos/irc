@@ -16,7 +16,8 @@ t_client		*get_client(int server_fd, t_data_server *st_data)
 	if (!client)
 		failure_exit("Unable to allocate t_client struct\n");
 	ft_bzero(client, sizeof(t_client));
-	if (!inet_ntop(AF_INET6, &that.sin6_addr, client->hostname, INET6_ADDRSTRLEN))
+	if (!inet_ntop(AF_INET6, &that.sin6_addr,
+				client->hostname, INET6_ADDRSTRLEN))
 		ft_strcpy(client->hostname, "Unknown");
 	client->sockfd = sockfd;
 	client->cmd_queue.buff_out =

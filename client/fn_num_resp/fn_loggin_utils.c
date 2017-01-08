@@ -34,7 +34,7 @@ void		push_msg(const char *msg, t_data *data)
 	push_back_circular_buffer(data->display_out, res_msg);
 }
 
-int				fn_462(t_num_resp_param *param, t_data *data)
+int			fn_462(t_num_resp_param *param, t_data *data)
 {
 	(void)param;
 	(void)data;

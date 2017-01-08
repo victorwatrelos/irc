@@ -8,7 +8,8 @@ static void	close_client(t_list *client_lst)
 	{
 		next = client_lst->next;
 		close(((t_client *)client_lst->content)->sockfd);
-		delete_circular_buffer(((t_client *)client_lst->content)->cmd_queue.buff_out);
+		delete_circular_buffer(((t_client *)client_lst->content)
+				->cmd_queue.buff_out);
 		free(client_lst->content);
 		free(client_lst);
 		client_lst = next;

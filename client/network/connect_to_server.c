@@ -23,6 +23,7 @@ static t_bool	browse_ip(int sockfd, struct addrinfo *servinfo, int port)
 	{
 		h = (struct sockaddr_in6 *)p->ai_addr;
 		inet_ntop(p->ai_family, &h->sin6_addr, ip, INET6_ADDRSTRLEN);
+		printf("ip: %s\n", ip);
 		if (ft_strcmp(ip, "0.0.0.0") == 0)
 		{
 			p = p->ai_next;
@@ -52,7 +53,7 @@ static int		hostname_to_ip(const char *hostname, int port)
 	if ((rv = getaddrinfo(hostname, port_str, &hints, &servinfo)) != 0)
 	{
 		free(port_str);
-		return (0);
+		return (-1);
 	}
 	if ((sockfd = socket(servinfo->ai_family, SOCK_STREAM, 0)) < 0)
 		return (-1);
@@ -66,7 +67,30 @@ static int		hostname_to_ip(const char *hostname, int port)
 	return (sockfd);
 }
 
-static int init_client_ipv6(int port, const char *host)
+static int		init_client_ipv4(int port, const char *host)
+{
+	struct sockaddr_in	to;
+	int					sockfd;
+
+	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		return (-1);
+	ft_bzero(&to, sizeof(to));
+	to.sin_family = AF_INET;
+	to.sin_port = htons(port);
+	if (inet_pton(AF_INET, host, &(to.sin_addr)) == 0)
+	{
+		close(sockfd);
+		return (-1);
+	}
+	if (connect(sockfd, (struct sockaddr *)&to, sizeof(struct sockaddr_in)) < 0)
+	{
+		close(sockfd);
+		return (-1);
+	}
+	return (sockfd);
+}
+
+static int		init_client_ipv6(int port, const char *host)
 {
 	struct sockaddr_in6	to;
 	int					sockfd;
@@ -76,8 +100,13 @@ static int init_client_ipv6(int port, const char *host)
 	ft_bzero(&to, sizeof(to));
 	to.sin6_family = AF_INET6;
 	to.sin6_port = htons(port);
-	inet_pton(AF_INET6, host, to.sin6_addr.s6_addr);
-	if (connect(sockfd, (struct sockaddr *)&to, sizeof(struct sockaddr_in6)) < 0)
+	if (inet_pton(AF_INET6, host, to.sin6_addr.s6_addr) == 0)
+	{
+		close(sockfd);
+		return (-1);
+	}
+	if (connect(sockfd, (struct sockaddr *)&to,
+				sizeof(struct sockaddr_in6)) < 0)
 	{
 		close(sockfd);
 		return (-1);
@@ -89,9 +118,16 @@ int				connect_to_server(t_param *param)
 {
 	int			sockfd;
 
+	if (param->host == NULL)
+	{
+		printf("Connection fail\n");
+		return (-1);
+	}
 	if ((sockfd = hostname_to_ip(param->host, param->port)) >= 0)
 		return (sockfd);
 	if ((sockfd = init_client_ipv6(param->port, param->host)) >= 0)
+		return (sockfd);
+	if ((sockfd = init_client_ipv4(param->port, param->host)) >= 0)
 		return (sockfd);
 	printf("Connection fail\n");
 	return (-1);
