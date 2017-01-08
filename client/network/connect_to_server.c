@@ -23,7 +23,6 @@ static t_bool	browse_ip(int sockfd, struct addrinfo *servinfo, int port)
 	{
 		h = (struct sockaddr_in6 *)p->ai_addr;
 		inet_ntop(p->ai_family, &h->sin6_addr, ip, INET6_ADDRSTRLEN);
-		printf("ip: %s\n", ip);
 		if (ft_strcmp(ip, "0.0.0.0") == 0)
 		{
 			p = p->ai_next;
@@ -120,7 +119,6 @@ int				connect_to_server(t_param *param)
 
 	if (param->host == NULL)
 	{
-		printf("Connection fail\n");
 		return (-1);
 	}
 	if ((sockfd = hostname_to_ip(param->host, param->port)) >= 0)
